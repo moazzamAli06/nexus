@@ -7,11 +7,12 @@ function ($scope, $location) {
 
 	};
 	$scope.$on('event:social-sign-in-success', function(event, userDetails){
-		//$scope.loggedInUser = userDetails
+		$scope.loggedInUser = userDetails
 	    //console.log(userDetails);
 		//$location.hash('');
 		$location.url("profile");
     })
 	
-	//$location.replace();
+    //$location.replace();
+
 });
