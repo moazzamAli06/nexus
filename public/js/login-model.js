@@ -86,3 +86,22 @@ $(function() {
     }
 });
 
+// set focus when modal is opened
+$('#login-modal').on('shown.bs.modal', function () {
+    $("#txtname").focus();
+});
+
+// show the modal onload
+$('#login-modal').modal({
+    show: true
+});
+
+// set focus when modal is opened
+$('#signup-modal').on('shown.bs.modal', function () {
+    $("#txtname").focus();
+});
+
+// show the modal onload
+$('#signup-modal').modal({
+    show: true
+});

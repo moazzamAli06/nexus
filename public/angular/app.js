@@ -3,14 +3,14 @@ convopal.config(function(socialProvider){
   socialProvider.setLinkedInKey("81i159jlzpga0k");
 });
 convopal
-// .config(function($locationProvider) {
-//     //$locationProvider.hashPrefix('!');
-//     //$locationProvider.html5Mode(true);
-// })
-.config(function($routeProvider,$locationProvider) {
-     //socialProvider.setLinkedInKey("81i159jlzpga0k");
+ .config(function ($locationProvider) {
+     //$locationProvider.hashPrefix('!');
+     $locationProvider.html5Mode(true);
+ })
+.config(function ($routeProvider, $locationProvider) {
+    //socialProvider.setLinkedInKey("81i159jlzpga0k");
     //$locationProvider.hashPrefix('!');
-    //$locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true).hashPrefix('*');
     $routeProvider.
     when('/login', {
         templateUrl: 'angular/partials/login.html',
@@ -22,27 +22,31 @@ convopal
     }).
     when('/', {
         templateUrl: 'angular/partials/dashboard.html',
-        controller:'MainController'
+        controller: 'MainController'
     }).
+     when('/profile', {
+         templateUrl: 'angular/partials/profile.html',
+         controller: 'ProfileController'
+     }).
     otherwise({
         redirectTo: '/'
     });
-$locationProvider.html5Mode(true);
+
 
 })
 .run(function($rootScope, $location) {
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-        if($location.hash() !== "" && $location.hash() !== "/" )
-        {
-            if ($rootScope.loggedInUser == null) {
-            // no logged user, redirect to /login
-                if ( next.templateUrl === "angular/partials/login.html") {
-                } 
-                else {
-                $location.path("/login");
-                }
-            }
-    }
+        if ($location.hash() !== "" && $location.hash() !== "/") {
+            $location.url("/" + $location.hash()).replace();
+            //    if ($rootScope.loggedInUser == null) {
+            //    // no logged user, redirect to /login
+            //        if ( next.templateUrl === "angular/partials/login.html") {
+            //        } 
+            //        else {
+            //        $location.path("/login");
+            //        }
+            //    }
+        }
     });
 
 });
