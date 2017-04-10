@@ -423,6 +423,7 @@
     <script src="{{ asset("angular/controllers/maincontroller.js") }}"></script>
     <script src="{{ asset("angular/controllers/usercontroller.js") }}"></script>
     <script src="{{ asset("angular/controllers/ProfileController.js") }}"></script>
+    <script src="{{ asset("angular/services/authService.js") }}"></script>
     <!-- <script src="js/controllers.js"></script> -->
 
     <!-- <script>

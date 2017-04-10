@@ -1,18 +1,22 @@
 
 convopal.controller('UserController',
-function ($scope, $location) {
-    //$location.absUrl = "http://127.0.0.1:8000/login";
-	//$scope.username = "Ali";
-	$scope.login = function(data){
-
-	};
+function ($scope,$rootScope,$location,$http,authService) {
+    
 	$scope.$on('event:social-sign-in-success', function(event, userDetails){
-		$scope.loggedInUser = userDetails
-	    //console.log(userDetails);
-		//$location.hash('');
-		$location.url("profile");
+		$rootScope.loggedInUser = userDetails;
+		var name = userDetails.name;
+		var email = userDetails.email;
+		var imageUrl = userDetails.imageUrl;
+		$rootScope.isAuthorized = true;
+		$http.post('store', {name:name,email:email,imageUrl:imageUrl}).then(function (response) {
+			console.log(response);
+		});
+		// $.post("/authenticate/",{name:userDetails.name},function(data){
+		// 	console.log(data);
+		// });
+		 //authService.save(userDetails);
+		$location.path("/profile");
+		$scope.$apply();
     })
-	
-    //$location.replace();
 
 });

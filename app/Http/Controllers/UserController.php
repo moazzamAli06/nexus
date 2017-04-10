@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class UserController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('index');
+        //return "ali";
+        print_r("ali");
     }
 
     /**
@@ -34,7 +35,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //User::create($request->all());
+        $user = new User(); 
+        $user->username = $request->input('name');
+        $user->email = $request->input('email');
+        $user->imageUrl = $request->input('imageUrl');
+        $user->role_id = 1;
+        //dd($user);
+        $user->save();
+       //$name =  $request->input('name');
+        return $user->id;
     }
 
     /**
@@ -68,7 +78,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name =  $request->input('name');
+        return $name;
     }
 
     /**

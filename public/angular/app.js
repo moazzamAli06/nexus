@@ -12,6 +12,10 @@ convopal
     //$locationProvider.hashPrefix('!');
     //$locationProvider.html5Mode(true).hashPrefix('*');
     $routeProvider.
+     when('/', {
+        templateUrl: 'angular/partials/dashboard.html',
+        controller: 'MainController'
+    }).
     when('/login', {
         templateUrl: 'angular/partials/login.html',
         controller: 'UserController'
@@ -19,10 +23,6 @@ convopal
     when('/signup', {
         templateUrl: 'partials/signup.html',
         controller: 'SignupController'
-    }).
-    when('/', {
-        templateUrl: 'angular/partials/dashboard.html',
-        controller: 'MainController'
     }).
      when('/profile', {
          templateUrl: 'angular/partials/profile.html',
@@ -35,17 +35,24 @@ convopal
 
 })
 .run(function($rootScope, $location) {
+    $rootScope.loggedInUser = "";
+    $rootScope.isAuthorized = false;
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
         if ($location.hash() !== "" && $location.hash() !== "/") {
-            $location.url("/" + $location.hash()).replace();
-            //    if ($rootScope.loggedInUser == null) {
-            //    // no logged user, redirect to /login
-            //        if ( next.templateUrl === "angular/partials/login.html") {
-            //        } 
-            //        else {
-            //        $location.path("/login");
-            //        }
-            //    }
+            
+               if ($rootScope.isAuthorized == true) {
+                   $location.url("/" + $location.hash()).replace();
+               // no logged user, redirect to /login
+                //    if ( next.templateUrl === "angular/partials/login.html") {
+                //    } 
+                //    else {
+                //    $location.path("/login");
+                //    }
+               }
+               else{
+                    $location.url("/" + $location.hash()).replace();
+                   $location.path("/login");
+               }
         }
     });
 

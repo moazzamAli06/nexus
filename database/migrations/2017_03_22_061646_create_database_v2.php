@@ -17,6 +17,7 @@ class CreateDatabaseV2 extends Migration {
         Schema::create('roles', function($table) {
             $table->increments('id');
             $table->string('title');
+            $table->timestamps();
         });
 
         Schema::create('users', function($table) {
@@ -24,10 +25,11 @@ class CreateDatabaseV2 extends Migration {
             $table->increments('id');
             $table->string('username');
             $table->string('email')->unique();
-            $table->string('password');
-            $table->string('token');
-            $table->string('expiry_date');
-            $table->string('created_date');
+            $table->string('password')->default("");
+            $table->string('imageUrl')->default("");
+            $table->string('token')->default("");
+            $table->string('expiry_date')->default("");
+            $table->timestamps();
             $table->integer('role_id')->unsigned();
 //            $table->foreign('role_id')->refrances('id')->on('roles');
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
@@ -42,8 +44,7 @@ class CreateDatabaseV2 extends Migration {
             $table->dateTimeTz('timezone');
             $table->string('dob');
             $table->string('gender');
-            $table->string('create_date');
-            $table->string('update_date');
+            
             $table->integer('user_id')->unsigned();
             $table->string('image_url');
             $table->string('short_info');
@@ -52,12 +53,13 @@ class CreateDatabaseV2 extends Migration {
             $table->string('face_time');
             $table->string('google_id');
             $table->string('qq');
+            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
          Schema::create('courses', function($table){
             $table->increments('id');
             $table->string('title');
-         
+            $table->timestamps();
         });
 
         Schema::create('languages', function($table) {
@@ -70,6 +72,7 @@ class CreateDatabaseV2 extends Migration {
             $table->string('is_native');
             $table->string('is_primary');
             $table->string('is_learning');
+            $table->timestamps();
           
         });
        
@@ -98,7 +101,7 @@ class CreateDatabaseV2 extends Migration {
             $table->string('brief_into');
             $table->string('long_intro');
             $table->string('availble_status');
-           
+            $table->timestamps();
              $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
         
@@ -108,6 +111,7 @@ class CreateDatabaseV2 extends Migration {
             $table->integer('prof_id')->unsigned();
             $table->integer('lang_id')->unsigned();
             $table->string('level');
+            $table->timestamps();
             $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
             $table->foreign('lang_id')->references('id')->on('languages')->onDelete('cascade');
        
@@ -118,6 +122,7 @@ class CreateDatabaseV2 extends Migration {
             $table->string('day');
             $table->string('time_to');
             $table->string('time_from');
+            $table->timestamps();
             $table->integer('prof_id')->unsigned();
             $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
            
@@ -125,6 +130,7 @@ class CreateDatabaseV2 extends Migration {
         
          Schema::create('tags', function($table) {
             $table->increments('id');
+            $table->timestamps();
             $table->integer('prof_id')->unsigned();
             $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
            
@@ -134,6 +140,7 @@ class CreateDatabaseV2 extends Migration {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('amount');
+            $table->timestamps();
              $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
         
@@ -142,6 +149,7 @@ class CreateDatabaseV2 extends Migration {
             $table->integer('std_id')->unsigned();
             $table->integer('prof_id')->unsigned();
             $table->integer('lang_id')->unsigned();
+            $table->timestamps();
             $table->string('is_reserved');
                $table->foreign('lang_id')->references('id')->on('languages')->onDelete('cascade');
                $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
@@ -158,6 +166,7 @@ class CreateDatabaseV2 extends Migration {
             $table->string('description');
             $table->string('file_url');
             $table->string('is_approved');
+            $table->timestamps();
             $table->integer('prof_id')->unsigned();
                $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
         });
@@ -172,6 +181,7 @@ class CreateDatabaseV2 extends Migration {
             $table->string('company');
             $table->string('description');
             $table->string('is_approved');
+            $table->timestamps();
             $table->integer('prof_id')->unsigned();
                $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
         });
@@ -183,7 +193,8 @@ class CreateDatabaseV2 extends Migration {
             $table->string('institute');
             $table->string('description');
             $table->string('file_url');
-             $table->string('is_approved');
+            $table->string('is_approved');
+            $table->timestamps();
             $table->integer('prof_id')->unsigned();
                $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
         });

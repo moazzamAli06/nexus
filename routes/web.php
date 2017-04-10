@@ -14,6 +14,8 @@
 Route::get('/', function () {
     return view('index');
 });
-
-
-
+Route::post('authenticate', 'AuthenticateController@authenticate');
+Route::post('store','UserController@store');
+// Route::post('store/{userDetails}',function($userDetails){
+//    echo 'ID: '.$userDetails.name;
+// });
