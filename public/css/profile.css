@@ -1,5 +1,6 @@
 .mainbody {
     background:#f0f0f0;
+    margin-top: 51px;
 }
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
@@ -66,3 +67,18 @@ overflow: hidden;
     position: absolute;
 }
 
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #f0f0f0;
+}
+.navbar-default {
+    background-color:white;
+    border-color: #b4b3b3;;
+}
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}

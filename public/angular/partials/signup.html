@@ -1,4 +1,4 @@
-<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+<!--<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-info" >
                     <div class="panel-heading">
                         <div class="panel-title">Sign In</div>
@@ -33,7 +33,7 @@
 
 
                                 <div style="margin-top:10px" class="form-group">
-                                    <!-- Button -->
+                                    
 
                                     <div class="col-sm-12 controls">
                                       <a id="btn-login" href="#" class="btn btn-success">Login  </a>
@@ -59,4 +59,49 @@
 
                         </div>                     
                     </div>  
-        </div>
+        </div>-->
+
+        <!-- BEGIN # SIGN UP -->
+            <div class="modal fade" ng-controller="UserController" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" align="center">
+                           
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                             <a linked-in  class="btn btn-block btn-social btn-linkedin">
+                                <i class="fa fa-linkedin"></i> Sign Up with LinkedIn
+                            </a>
+                           
+                        </div>
+
+                        <!-- Begin # DIV Form -->
+                        <!--<div id="div-forms">
+
+                           
+                            <form id="login-form">
+                                <div class="modal-body">
+                                    <div id="div-login-msg">
+                                        <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                        <span id="text-login-msg">Type your username and password.</span>
+                                    </div>
+                                    <input id="login_username" class="form-control" type="text" placeholder="Username" required>
+                                    <input id="login_password" class="form-control" type="password" placeholder="Password" required>
+                                  
+                                </div>
+                                <div class="modal-footer">
+                                    <div>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                                    </div>
+                                </div>
+                            </form>
+                             
+                        </div>-->
+                        <!-- End # DIV Form -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- END # SIGNUP -->
+            <script src="/js/login-model.js"></script>

@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\User;
+use App\Student;
+use App\Professional;
+use App\Http\Controllers\Controller;
+
 class UserController extends Controller
 {
     /**
@@ -35,16 +40,48 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //User::create($request->all());
-        $user = new User(); 
-        $user->username = $request->input('name');
-        $user->email = $request->input('email');
-        $user->imageUrl = $request->input('imageUrl');
-        $user->role_id = 1;
-        //dd($user);
-        $user->save();
-       //$name =  $request->input('name');
-        return $user->id;
+        
+        $email = $request->input('email');
+        //$value = DB::table('users')->where('email', $email)->value('email');
+        
+        $value = User::where('email',$email) -> first();
+        if($value === null)
+        {
+            $user = new User(); 
+            //$user->username = $request->input('name');
+            $user->email = $request->input('email');
+            //$user->imageUrl = $request->input('imageUrl');
+           
+            if($request->input('UserType') == "1")
+            {
+                
+                $user->role_id = 1;
+                $user->save(); 
+                $profile = new Student();
+                $profile->username = $request->input('name');
+                $profile->imageUrl = $request->input('imageUrl');
+                $profile->country = "";
+                $profile->city = "";
+                $profile->timezone = "";
+                $profile->dob = "";
+                $profile->gender = "";
+                $profile->user_id = $user->id;
+                $profile->short_info ="hello";
+                $profile->save();
+            }
+            else if($request->input('UserType') == "2")
+            {
+                $user->role_id = 2;
+                $user->save(); 
+                $profile = new Professional();
+                $profile->username = $request->input('name');
+                $profile->imageUrl = $request->input('imageUrl');
+                $profile->user_id = $user->id;
+                $profile->save();
+            }
+        }
+        $request->session()->put('user', $value);
+        return $value;
     }
 
     /**
@@ -53,9 +90,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        
+     
+    
+        // dd($request->session()->get('email'));
+
     }
 
     /**

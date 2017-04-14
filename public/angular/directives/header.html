@@ -1,0 +1,192 @@
+<div class="nicdark_section" ng-if="isAuthorized == false">
+
+    <div class="nicdark_section nicdark_bg_green">
+
+        <div class="nicdark_container nicdark_clearfix">
+
+            <div class="grid grid_6 nicdark_padding_botttom_10 nicdark_padding_top_10 nicdark_text_align_center_responsive">
+
+
+                <div class="nicdark_navigation_top_header_3">
+                    <ul>
+                        <li>
+                            <img alt="" class="nicdark_margin_right_10 " width="15" src="img/icons/icon-world-white.svg" />
+                            <a class=" nicdark_line_height_18 nicdark_color_white" href="#">LANGUAGES</a>
+
+                            <ul class="nicdark_sub_menu">
+                                <li>
+                                    <a href="#">English</a>
+                                </li>
+                                <li>
+                                    <a href="#">Russian</a>
+                                </li>
+                                <li>
+                                    <a href="#">Italian</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li>
+
+                            <img alt="" class="nicdark_margin_right_10" width="15" src="img/icons/icon-share-white.svg" />
+                            <a class=" nicdark_line_height_18 nicdark_color_white" href="#">OUR SOCIAL</a>
+
+                            <ul class="nicdark_sub_menu">
+                                <li>
+                                    <a target="_blank" href="https://www.facebook.com/cleanthemeslab">Facebook</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://dribbble.com/cleanthemeslab">Dribbble</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://twitter.com/cleanthemeslab">Twitter</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.instagram.com/cleanthemeslab/">Instagram</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.behance.net/cleanthemeslab">Behance</a>
+                                </li>
+                            </ul>
+
+                            <a target="_blank" href="https://www.facebook.com/cleanthemeslab">
+                                <img alt="" class="nicdark_margin_left_10  nicdark_margin_top_2 nicdark_display_none_all_responsive" width="12" src="img/icons/icon-facebook-white.svg" />
+                            </a>
+                            <a target="_blank" href="https://twitter.com/cleanthemeslab">
+                                <img alt="" class="nicdark_margin_left_10  nicdark_margin_top_2 nicdark_display_none_all_responsive" width="12" src="img/icons/icon-twitter-white.svg" />
+                            </a>
+                            <a target="_blank" href="#">
+                                <img alt="" class="nicdark_margin_left_10  nicdark_margin_top_2 nicdark_display_none_all_responsive" width="12" src="img/icons/icon-linkedin-white.svg" />
+                            </a>
+                            <a target="_blank" href="#">
+                                <img alt="" class="nicdark_margin_left_10  nicdark_margin_top_2 nicdark_display_none_all_responsive" width="12" src="img/icons/icon-pinterest-white.svg" />
+                            </a>
+                            <a target="_blank" href="https://www.instagram.com/cleanthemeslab/">
+                                <img alt="" class="nicdark_margin_left_10  nicdark_margin_top_2 nicdark_display_none_all_responsive" width="12" src="img/icons/icon-instagram-white.svg" />
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+            <div class="grid grid_6 nicdark_text_align_right nicdark_border_top_1_solid_greendark_responsive nicdark_text_align_center_responsive nicdark_padding_botttom_10 nicdark_padding_top_10">
+
+
+                <div class="nicdark_navigation_top_header_3">
+                    <ul>
+                        <li>
+                            <img alt="" class="nicdark_margin_right_10 nicdark_float_left" width="15" src="img/icons/icon-user-white.svg" />
+                            <a class="nicdark_color_white" href="#login" target="_self" ng-click="login">LOGIN</a>
+                        </li>
+                        <li>
+                            <img alt="" class="nicdark_margin_right_10 nicdark_float_left" width="15" src="img/icons/icon-login-white.svg" />
+                            <a class="nicdark_color_white" href="#signup" target="_self">SIGNUP</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="navbar-wrapper" ng-if="isAuthorized == true">
+    <div class="container-fluid">
+        <div class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                                                class="icon-bar"></span><span class="icon-bar"></span>
+                                        </button>
+                                        <div ng-if="userType == '1'">
+                                            <a class="navbar-brand" href="dashboard">Convopal</a>
+                                        </div>
+                                         <div ng-if="userType == '2'">
+                                            <a class="navbar-brand" href="Tdashboard">Convopal</a>
+                                        </div>
+                                    </div>
+                <div class="navbar-collapse collapse">
+                    
+                    <ul class="nav navbar-nav navbar-right">
+                                            <li><a href="#"><span class="fa fa-search fa-lg" aria-hidden="true" style="vertical-align: middle"></span> FIND A TEACHER</a></li>
+                                            <li><a href="#"><i class="fa fa-globe fa-lg" aria-hidden="true" style="vertical-align: middle"></i> COMMUNITY</a></li>
+                                            <li><a href="#"><i class="fa fa-bookmark fa-lg" aria-hidden="true" style="vertical-align: middle"></i> LESSONS</a></li>
+                                            <li><a href="#"><i class="fa fa-users fa-lg" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a></li>
+                                            <li><span class="badge badge-important">2</span><a href="#"><i class="fa fa-bell-o fa-lg" aria-hidden="true"></i></a></li>
+                                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
+                                                        <img data-ng-src="{{loggedInUser.imageUrl}}" class="img-responsive img-circle" title="John Doe" alt="John Doe" width="30px" height="30px">
+                                                    </span>
+                                                    <span class="user-name" >
+                                                        {{loggedInUser.name}}
+                                                    </span>
+                                                    <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <div class="navbar-content">
+                                                            <div class="row">
+                                                                
+                                                                <div class="col-md-12">
+                                                                    <a href=""><span>Student Wallets</span>
+                                                                    <p class="text-muted small">
+                                                                        $ 0.005 USD</p></a>
+                                                                    <div class="divider">
+                                                                    </div>
+                                                                    </div>
+                                                                
+                                                                <div class="col-md-12">
+                                                                    <a href=""><span>Buy Credits</span></a><br>
+                                                                    <a href=""><span>Buy a Gift card</span></a><br>
+                                                                    <a href=""><span>Redeem Promotion Code</span></a><br>
+                                                                    <div class="divider">
+                                                                    </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="col-md-12">
+                                                                        <div ng-if="userType == '1'">
+                                                                            <a href="profile"><span>View Profile</span></a><br>
+                                                                            <a href="profile"><span>Edit Profile</span></a><br>
+                                                                        </div>
+                                                                        <div ng-if="userType == '2'">
+                                                                             <a href="teacher"><span>View Profile</span></a><br>
+                                                                            <a href="teacher"><span>Edit Profile</span></a><br>
+                                                                        </div>
+                                                                    <a href=""><span>Account Setting</span></a>
+                                                                    <div class="divider">
+                                                                    </div>
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="navbar-footer">
+                                                            <div class="navbar-footer-content">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <a href="#" class="btn btn-default btn-sm"><i class="fa fa-unlock-alt" aria-hidden="true"></i>Support</a>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <a ng-click="logout()" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

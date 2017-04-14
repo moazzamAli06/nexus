@@ -11,7 +11,7 @@ convopal.factory('authService', function($http) {
         save : function(userDetails) {
             return $http({
                 method: 'POST',
-                url: 'store',
+                url: 'user/store',
                 data: {name:userDetails.name,email:userDetails.email,imageUrl:userDetails.imageUrl},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(data){

@@ -23,10 +23,10 @@ class CreateDatabaseV2 extends Migration {
         Schema::create('users', function($table) {
             
             $table->increments('id');
-            $table->string('username');
+            
             $table->string('email')->unique();
             $table->string('password')->default("");
-            $table->string('imageUrl')->default("");
+           
             $table->string('token')->default("");
             $table->string('expiry_date')->default("");
             $table->timestamps();
@@ -38,21 +38,21 @@ class CreateDatabaseV2 extends Migration {
         Schema::create('students', function($table) {
             
             $table->increments('id');
-            $table->string('name');
+            $table->string('username');
+            $table->string('imageUrl')->default("");
             $table->string('country');
             $table->string('city');
-            $table->dateTimeTz('timezone');
+            $table->string('timezone');
             $table->string('dob');
             $table->string('gender');
             
             $table->integer('user_id')->unsigned();
-            $table->string('image_url');
-            $table->string('short_info');
-            $table->string('long_info');
-            $table->string('skype_id');
-            $table->string('face_time');
-            $table->string('google_id');
-            $table->string('qq');
+            $table->string('short_info')->default("");
+            $table->string('long_info')->default("");
+            $table->string('skype_id')->default("");
+            $table->string('face_time')->default("");
+            $table->string('google_id')->default("");
+            $table->string('qq')->default("");
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
@@ -76,31 +76,32 @@ class CreateDatabaseV2 extends Migration {
           
         });
        
-        Schema::create('professional', function($table) {
+        Schema::create('professionals', function($table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('fname');
-            $table->string('lname');
-            $table->string('user_name');
-            $table->string('social_id');
-            $table->string('account_id');
-            $table->string('country');
-            $table->string('city');
-            $table->string('living_country');
-            $table->string('C_fname');
-            $table->string('C_lname');
-            $table->string('C_streetadress');
-            $table->string('C_city');
-            $table->string('C_state');
-            $table->integer('C_zip');
-            $table->string('C_country');
-            $table->integer('C_phone');
-            $table->string('C_email');
-            $table->string('video_url');
-            $table->string('is_show_publicity');
-            $table->string('brief_into');
-            $table->string('long_intro');
-            $table->string('availble_status');
+            $table->string('fname')->default("");
+            $table->string('lname')->default("");
+             $table->string('username');
+            $table->string('imageUrl')->default("");
+            $table->string('social_id')->default("");
+            $table->string('account_id')->default("");
+            $table->string('country')->default("");
+            $table->string('city')->default("");
+            $table->string('living_country')->default("");
+            $table->string('C_fname')->default("");
+            $table->string('C_lname')->default("");
+            $table->string('C_streetadress')->default("");
+            $table->string('C_city')->default("");
+            $table->string('C_state')->default("");
+            $table->string('C_zip')->default("");
+            $table->string('C_country')->default("");
+            $table->string('C_phone')->default("");
+            $table->string('C_email')->default("");
+            $table->string('video_url')->default("");
+            $table->string('is_show_publicity')->default("");
+            $table->string('brief_into')->default("");
+            $table->string('long_intro')->default("");
+            $table->string('availble_status')->default("");
             $table->timestamps();
              $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
@@ -112,7 +113,7 @@ class CreateDatabaseV2 extends Migration {
             $table->integer('lang_id')->unsigned();
             $table->string('level');
             $table->timestamps();
-            $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
+            $table->foreign('prof_id')->references('id')->on('professionals')->onDelete('cascade');
             $table->foreign('lang_id')->references('id')->on('languages')->onDelete('cascade');
        
         });
@@ -124,7 +125,7 @@ class CreateDatabaseV2 extends Migration {
             $table->string('time_from');
             $table->timestamps();
             $table->integer('prof_id')->unsigned();
-            $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
+            $table->foreign('prof_id')->references('id')->on('professionals')->onDelete('cascade');
            
         });
         
@@ -132,7 +133,7 @@ class CreateDatabaseV2 extends Migration {
             $table->increments('id');
             $table->timestamps();
             $table->integer('prof_id')->unsigned();
-            $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
+            $table->foreign('prof_id')->references('id')->on('professionals')->onDelete('cascade');
            
         });
 
@@ -152,7 +153,7 @@ class CreateDatabaseV2 extends Migration {
             $table->timestamps();
             $table->string('is_reserved');
                $table->foreign('lang_id')->references('id')->on('languages')->onDelete('cascade');
-               $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
+               $table->foreign('prof_id')->references('id')->on('professionals')->onDelete('cascade');
                $table->foreign('std_id')->references('id')->on('students')->onDelete('cascade');
         });
         
@@ -168,7 +169,7 @@ class CreateDatabaseV2 extends Migration {
             $table->string('is_approved');
             $table->timestamps();
             $table->integer('prof_id')->unsigned();
-               $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
+               $table->foreign('prof_id')->references('id')->on('professionals')->onDelete('cascade');
         });
         
          Schema::create('experince', function($table) {
@@ -183,7 +184,7 @@ class CreateDatabaseV2 extends Migration {
             $table->string('is_approved');
             $table->timestamps();
             $table->integer('prof_id')->unsigned();
-               $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
+               $table->foreign('prof_id')->references('id')->on('professionals')->onDelete('cascade');
         });
         
           Schema::create('certificates', function($table) {
@@ -196,7 +197,7 @@ class CreateDatabaseV2 extends Migration {
             $table->string('is_approved');
             $table->timestamps();
             $table->integer('prof_id')->unsigned();
-               $table->foreign('prof_id')->references('id')->on('professional')->onDelete('cascade');
+               $table->foreign('prof_id')->references('id')->on('professionals')->onDelete('cascade');
         });
    
     }

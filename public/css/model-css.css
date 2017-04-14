@@ -6,7 +6,7 @@
 }
 
 #login-modal .modal-dialog {
-    width: 350px;
+    width: 350px !important; 
 }
 
 #login-modal input[type=text], input[type=password] {

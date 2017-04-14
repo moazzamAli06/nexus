@@ -2,7 +2,7 @@
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<html ng-app="convopal">
+<html ng-app="convopal" ng-init="isAuthorized = false">
 <head>
 
     <meta charset="UTF-8" />
@@ -15,7 +15,10 @@
     <!--START CSS-->
     <link rel="stylesheet" href="{{ asset("css/nicdark_style.min.css") }}" />
     <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" />
-
+    <link rel="stylesheet" href="{{ asset("css/model-css.css") }}"> 
+     <link href="{{ asset("css/profile.css") }}" rel="stylesheet" />
+     <link href="{{ asset("css/teacher.css") }}" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">-->
 
     <!-- <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
 <script src="bower_components/restangular/dist/restangular.min.js"></script> -->
@@ -206,118 +209,8 @@
 
             </div>
             <!--END menu responsive-->
-
-
-
-
-
-            <div class="nicdark_section">
-
-                <div class="nicdark_section nicdark_bg_green">
-
-
-
-
-                    <!--start nicdark_container-->
-                    <div class="nicdark_container nicdark_clearfix">
-
-                        <div class="grid grid_6 nicdark_padding_botttom_10 nicdark_padding_top_10 nicdark_text_align_center_responsive">
-
-
-                            <div class="nicdark_navigation_top_header_3">
-                                <ul>
-                                    <li>
-                                        <img alt="" class="nicdark_margin_right_10 " width="15" src="img/icons/icon-world-white.svg" />
-                                        <a class=" nicdark_line_height_18 nicdark_color_white" href="#">LANGUAGES</a>
-
-                                        <ul class="nicdark_sub_menu">
-                                            <li>
-                                                <a href="#">English</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Russian</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Italian</a>
-                                            </li>
-                                        </ul>
-
-                                    </li>
-                                    <li>
-
-                                        <img alt="" class="nicdark_margin_right_10" width="15" src="img/icons/icon-share-white.svg" />
-                                        <a class=" nicdark_line_height_18 nicdark_color_white" href="#">OUR SOCIAL</a>
-
-                                        <ul class="nicdark_sub_menu">
-                                            <li>
-                                                <a target="_blank" href="https://www.facebook.com/cleanthemeslab">Facebook</a>
-                                            </li>
-                                            <li>
-                                                <a target="_blank" href="https://dribbble.com/cleanthemeslab">Dribbble</a>
-                                            </li>
-                                            <li>
-                                                <a target="_blank" href="https://twitter.com/cleanthemeslab">Twitter</a>
-                                            </li>
-                                            <li>
-                                                <a target="_blank" href="https://www.instagram.com/cleanthemeslab/">Instagram</a>
-                                            </li>
-                                            <li>
-                                                <a target="_blank" href="https://www.behance.net/cleanthemeslab">Behance</a>
-                                            </li>
-                                        </ul>
-
-                                        <a target="_blank" href="https://www.facebook.com/cleanthemeslab">
-                                            <img alt="" class="nicdark_margin_left_10  nicdark_margin_top_2 nicdark_display_none_all_responsive" width="12" src="img/icons/icon-facebook-white.svg" />
-                                        </a>
-                                        <a target="_blank" href="https://twitter.com/cleanthemeslab">
-                                            <img alt="" class="nicdark_margin_left_10  nicdark_margin_top_2 nicdark_display_none_all_responsive" width="12" src="img/icons/icon-twitter-white.svg" />
-                                        </a>
-                                        <a target="_blank" href="#">
-                                            <img alt="" class="nicdark_margin_left_10  nicdark_margin_top_2 nicdark_display_none_all_responsive" width="12" src="img/icons/icon-linkedin-white.svg" />
-                                        </a>
-                                        <a target="_blank" href="#">
-                                            <img alt="" class="nicdark_margin_left_10  nicdark_margin_top_2 nicdark_display_none_all_responsive" width="12" src="img/icons/icon-pinterest-white.svg" />
-                                        </a>
-                                        <a target="_blank" href="https://www.instagram.com/cleanthemeslab/">
-                                            <img alt="" class="nicdark_margin_left_10  nicdark_margin_top_2 nicdark_display_none_all_responsive" width="12" src="img/icons/icon-instagram-white.svg" />
-                                        </a>
-
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                        </div>
-
-
-                        <div class="grid grid_6 nicdark_text_align_right nicdark_border_top_1_solid_greendark_responsive nicdark_text_align_center_responsive nicdark_padding_botttom_10 nicdark_padding_top_10">
-
-
-                            <div class="nicdark_navigation_top_header_3">
-                                <ul>
-                                    <li>
-                                        <img alt="" class="nicdark_margin_right_10 nicdark_float_left" width="15" src="img/icons/icon-user-white.svg" />
-                                        <a class="nicdark_color_white" href="#login" target="_self">LOGIN</a>
-                                    </li>
-                                    <li>
-                                        <img alt="" class="nicdark_margin_right_10 nicdark_float_left" width="15" src="img/icons/icon-login-white.svg" />
-                                        <a class="nicdark_color_white" href="#">REGISTER</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-                    <!--end container-->
-
-                </div>
-
-            </div>
-
-
+            <div header ></div>
+ 
             <div ng-view></div>
             <!-- <ng-view></ng-view> -->
 
@@ -412,38 +305,35 @@
     <!--js-->
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/angular.min.js") }}"></script>
-    <!-- <script src="bower_components/lodash/lodash.min.js"></script> -->
+    
+ <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>-->
+
+  <!-- Angular Material Library -->
+ <!-- <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>-->
+
     <script src="{{ asset("js/angular-route.min.js") }}"></script>
     <!--<script src="{{ asset("js/nicdark_plugins.min.js") }}" type="text/javascript"></script>-->
    
     <script src="{{ asset("js/bootstrap.min.js") }}"></script>
+    <!--<script src="{{ asset("js/login-model.js") }}" class"ng-scope"></script>-->
     <script src="{{ asset("js/angularjs-social-login.js") }}"></script>
     <script src="{{ asset("angular/app.js") }}"></script>
+    <script src="{{ asset("js/moment.js") }}"></script>
+     <script src="{{ asset("js/angular-moment.min.js") }}"></script>
     <!--    <script src="{{ asset("angular/angular_social_login.js") }}"></script> -->
-    <script src="{{ asset("angular/controllers/maincontroller.js") }}"></script>
-    <script src="{{ asset("angular/controllers/usercontroller.js") }}"></script>
+    <script src="{{ asset("angular/controllers/MainController.js") }}"></script>
+    <!--<script src="{{ asset("angular/services/techerprofile.js") }}"></script>-->
+    <script src="{{ asset("angular/controllers/UserController.js") }}"></script>
     <script src="{{ asset("angular/controllers/ProfileController.js") }}"></script>
-    <script src="{{ asset("angular/services/authService.js") }}"></script>
+    <script src="{{ asset("angular/controllers/TeacherController.js") }}"></script>
+     <script src="{{ asset("angular/controllers/StudentDashboardController.js") }}"></script>
+     <script src="{{ asset("angular/services/authService.js") }}"></script>
+     <script src="{{ asset("angular/services/profileService.js") }}"></script>
     <!-- <script src="js/controllers.js"></script> -->
 
-    <!-- <script>
-var app = angular.module("convopal", ["ngRoute"]);
-app.config(function($routeProvider) {
-    $routeProvider
-    .when("/dashboard", {
-        templateUrl : "angular/partials/dashboard.html"
-    })
-    .when("/red", {
-        templateUrl : "red.htm"
-    })
-    .when("/green", {
-        templateUrl : "green.htm"
-    })
-    .when("/blue", {
-        templateUrl : "blue.htm"
-    });
-});
-</script> -->
 </body>
 
 </html>
