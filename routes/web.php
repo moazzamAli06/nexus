@@ -20,11 +20,12 @@ Route::get('user/show','UserController@show');
 Route::post('profile/store','ProfileController@store');
 Route::get('profile/show','ProfileController@show');
 Route::post('profile/update','ProfileController@update');
-
+Route::post('profile/imageUpload','ProfileController@imageUpload');
 Route::post('teacher/store','TeacherController@store');
 Route::get('teacher/show','TeacherController@show');
 Route::post('teacher/update','TeacherController@update');
-
+Route::post('experience/create','ExperienceController@create');
+Route::post('education/create','EducationController@create');
 // Route::get('session/get','SessionController@accessSessionData');
 // Route::get('session/set','SessionController@storeSessionData');
 // Route::get('session/remove','SessionController@deleteSessionData');

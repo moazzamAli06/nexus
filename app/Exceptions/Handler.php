@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class Handler extends ExceptionHandler
 {
     /**
@@ -42,10 +42,28 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
+    // public function render($request, Exception $exception)
+    // {
+    //     return parent::render($request, $exception);
+    // }
+    public function render($request, Exception $e)
+{
+    if ($e instanceof ModelNotFoundException) {
+        $e = new NotFoundHttpException($e->getMessage(), $e);
     }
+
+    // handle Angular routes when accessed directly from the browser without the need of the '#'
+    if ($e instanceof NotFoundHttpException) {
+
+        $url = parse_url($request->url());
+        $url = str_replace("/","#",$url);
+        $angular_url = $url['scheme'] . '://' . $url['host'] . ':8000' . $url['path'];
+
+        return response()->redirectTo($angular_url);
+    }
+    //var_dump($url);
+    return parent::render($request, $e);
+}
 
     /**
      * Convert an authentication exception into an unauthenticated response.

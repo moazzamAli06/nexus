@@ -330,6 +330,7 @@
     <script src="{{ asset("angular/controllers/ProfileController.js") }}"></script>
     <script src="{{ asset("angular/controllers/TeacherController.js") }}"></script>
      <script src="{{ asset("angular/controllers/StudentDashboardController.js") }}"></script>
+      <script src="{{ asset("angular/controllers/TeacherDashboardController.js") }}"></script>
      <script src="{{ asset("angular/services/authService.js") }}"></script>
      <script src="{{ asset("angular/services/profileService.js") }}"></script>
     <!-- <script src="js/controllers.js"></script> -->

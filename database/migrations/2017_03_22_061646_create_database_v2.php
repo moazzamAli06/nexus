@@ -118,7 +118,7 @@ class CreateDatabaseV2 extends Migration {
        
         });
         
-        Schema::create('timetable', function($table) {
+        Schema::create('timetables', function($table) {
             $table->increments('id');
             $table->string('day');
             $table->string('time_to');
@@ -137,7 +137,7 @@ class CreateDatabaseV2 extends Migration {
            
         });
 
-         Schema::create('wallet', function($table) {
+         Schema::create('wallets', function($table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('amount');
@@ -145,7 +145,7 @@ class CreateDatabaseV2 extends Migration {
              $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
         
-       Schema::create('schedule', function($table) {
+       Schema::create('schedules', function($table) {
             $table->increments('id');
             $table->integer('std_id')->unsigned();
             $table->integer('prof_id')->unsigned();
@@ -157,7 +157,7 @@ class CreateDatabaseV2 extends Migration {
                $table->foreign('std_id')->references('id')->on('students')->onDelete('cascade');
         });
         
-         Schema::create('education', function($table) {
+         Schema::create('educations', function($table) {
             $table->increments('id');
             $table->string('from_date');
             $table->string('to_date');
@@ -172,7 +172,7 @@ class CreateDatabaseV2 extends Migration {
                $table->foreign('prof_id')->references('id')->on('professionals')->onDelete('cascade');
         });
         
-         Schema::create('experince', function($table) {
+         Schema::create('experiences', function($table) {
             $table->increments('id');
             $table->string('from_date');
             $table->string('to_date');

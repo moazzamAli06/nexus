@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Professional;
+use App\Experience;
+use App\Education;
 use App\Http\Requests;
 use App\User;
 use DateTime;
@@ -70,6 +72,13 @@ class TeacherController extends Controller
     {
          $user = $request->session()->get('user');
          $value = Professional::where('user_id',$user->id) -> first();
+         $value->experiences = Experience::where('prof_id',$value->id)->get();
+         //$value->educations = Education::where('prof_id',$value->id)->get();
+         if($value != null)
+         {
+             $value->isAuthorized = true;
+         }
+         
          return $value;
          
     }
@@ -101,6 +110,7 @@ class TeacherController extends Controller
         $teacher = Professional::find($request->input('id'));
         $teacher->username = $request->input('username');
         $teacher->fname = $request->input('fname');
+        $teacher->lname = $request->input('lname');
         $teacher->social_id = $request->input('social_id');
         $teacher->account_id = $request->input('account_id');
         $teacher->country = $request->input('living_country');;
@@ -109,7 +119,7 @@ class TeacherController extends Controller
         $teacher->C_fname = $request->input('C_fname');
         $teacher->C_lname = $request->input('C_lname');
         $teacher->C_streetadress = $request->input('C_streetadress');
-        //$teacher->C_city = $request->input('C_city');
+        $teacher->C_city = $request->input('C_city');
         $teacher->C_state = $request->input('C_state');
         $teacher->C_zip = $request->input('C_zip');
         $teacher->C_country = $request->input('C_country');
@@ -118,8 +128,8 @@ class TeacherController extends Controller
         $teacher->video_url = $request->input('video_url');
         $teacher->is_show_publicity = $request->input('is_show_publicity');
         $teacher->brief_into = $request->input('brief_into');
-        //$teacher->long_intro = $request->input('long_intro');
-        //$teacher->availble_status = $request->input('availble_status');
+        $teacher->long_intro = $request->input('long_intro');
+        $teacher->availble_status = $request->input('availble_status');
         $teacher->save();
         return $request->All();
     }

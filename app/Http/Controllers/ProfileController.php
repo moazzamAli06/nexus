@@ -70,7 +70,10 @@ class ProfileController extends Controller
     {
         $user = $request->session()->get('user');
         $value = Student::where('user_id',$user->id) -> first();
-       
+        if($value != null)
+         {
+             $value->isAuthorized = true;
+         }
     //    if(session()->has('email'))
     //      echo session()->get('email');
     //   else
@@ -105,29 +108,63 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-        $now = new DateTime();
-        //$profile = new Student();
-        //$profile->name = $request->input('name');
-        //$profile->id = $request->input('id');
-        $profile = Student::find($request->input('id'));
-        $profile->username = $request->input('name');
-        $profile->imageUrl = $request->input('imageUrl');
-        $profile->country = $request->input('country');
-        $profile->city = $request->input('city');;
-        $profile->timezone = $request->input('timezone');
-        $profile->dob = $request->input('month') .'/'. $request->input('day') .'/'. $request->input('year');
-        $profile->gender = $request->input('gender');
-        $profile->user_id = $request->input('user_id');
-        $profile->short_info = $request->input('short_info');
-        $profile->long_info = $request->input('long_info');
-        $profile->skype_id = $request->input('skype_id');
-        $profile->face_time = $request->input('face_time');
-        $profile->google_id = $request->input('google_id');
-        $profile->qq = $request->input('qq');
-        $profile->save();
-        return $profile->All();
-    }
+        //$now = new DateTime();
+        //$input = $request->input('file');
+        $data = $request->input('imageUrl');
+        $png_url = "img-".time().".jpeg";
+        $path = public_path().'/'. $png_url;
+        //file_get_contents($data)->move($destinationPath, $png_url);
+        $img = Image::make(file_get_contents($data));
+        $img->save($path);
+        return $path;
+        //return public_path();
+        // $file = array('image' => Input::file('file'));
+        // // setting up rules
+        // $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
+        // // doing the validation, passing post data, rules and the messages
+        // $validator = Validator::make($file, $rules);
+        // if ($validator->fails()) {
+        // // send back to the page with the input data and errors
+        // return "validation failed";
+        // }else {
+        //     // checking file is valid.
+        //     if (Input::file('file')->isValid()) {
+        //     $destinationPath = 'assets/img'; // upload path
+        //     $extension = Input::file('file')->getClientOriginalExtension(); // getting image extension
+        //     $fileName = rand(11111,99999).'.'.$extension; // renameing image
+        //     Input::file('file')->move($destinationPath, $user_name."_$user_id".".jpeg"); // uploading file to given path
+        //     // sending back with message
+        //     return 'Upload successfully';
+        //     }
+        //     else {
+        //     // sending back with error message.
+        //     return 'uploaded file is not valid';
+        //     }
+        // }
 
+
+        // $profile = Student::find($request->input('id'));
+        // $profile->username = $request->input('name');
+        // $profile->imageUrl = $request->input('imageUrl');
+        // $profile->country = $request->input('country');
+        // $profile->city = $request->input('city');;
+        // $profile->timezone = $request->input('timezone');
+        // $profile->dob = $request->input('month') .'/'. $request->input('day') .'/'. $request->input('year');
+        // $profile->gender = $request->input('gender');
+        // $profile->user_id = $request->input('user_id');
+        // $profile->short_info = $request->input('short_info');
+        // $profile->long_info = $request->input('long_info');
+        // $profile->skype_id = $request->input('skype_id');
+        // $profile->face_time = $request->input('face_time');
+        // $profile->google_id = $request->input('google_id');
+        // $profile->qq = $request->input('qq');
+        // $profile->save();
+        // return $profile->All();
+    }
+    public function imageUpload(Request $request)
+    {
+        return $request;
+    }
     /**
      * Remove the specified resource from storage.
      *

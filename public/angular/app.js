@@ -5,7 +5,7 @@ convopal.config(function(socialProvider){
 convopal
  .config(function ($locationProvider) {
      //$locationProvider.hashPrefix('!');
-     $locationProvider.html5Mode(true);
+     $locationProvider.html5Mode(true).hashPrefix('!');
  })
 .config(function ($routeProvider, $locationProvider) {
      //$rootScope.isAuthorized = false;
@@ -39,12 +39,12 @@ convopal
      }).
       when('/Tdashboard', {
          templateUrl: 'angular/partials/teacherDashboard.html',
-         controller: 'TeacherController'
+         controller: 'TeacherDashboardController'
      }).
     otherwise({
         redirectTo: '/'
     });
-
+    $locationProvider.html5Mode(true);
 //  $rootScope.logout = function(){
 //         socialLoginService.logout();
 //          $rootScope.isAuthorized = false;
@@ -56,48 +56,48 @@ convopal
 .run(function($rootScope, $location) {
     $rootScope.loggedInUser = "";
     $rootScope.isAuthorized = false;
-     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-        if ($location.hash() !== "" && $location.hash() !== "/") {
-            
-               if ($rootScope.isAuthorized == true) {
-                   $location.url("/" + $location.hash()).replace();
-               // no logged user, redirect to /login
-                //    if ( next.templateUrl === "angular/partials/login.html") {
-                //    } 
-                //    else {
-                //    $location.path("/login");
-                //    }
-               }
-               else{
-                    $location.url("/" + $location.hash());
-                   //$location.path("/login");
-               }
+     $rootScope.$on("$routeChangeStart", function(event, next, current) {
+        
+        var url = $location.hash();
+        if(url !== "")
+        {
+            $location.url(url);
+            $location.path(url);
         }
+        // if (url != "" && url != "/" && url != "/signup" && url != "/#signup" && url != "/login") {
+            
+        //        if ($rootScope.isAuthorized == true) {
+        //            $location.url("/" + $location.hash()).replace();
+        //        // no logged user, redirect to /login
+        //         //    if ( next.templateUrl === "angular/partials/login.html") {
+        //         //    } 
+        //         //    else {
+        //         //    $location.path("/login");
+        //         //    }
+        //        }
+        //        else{
+        //             //$location.url("/" + $location.hash());
+        //            $location.url("/login");
+        //        }
+        // }
+        // else{
+        //     if($location.hash() == "" )
+        //     {
+        //         $location.url($location.path());
+        //     }
+        //     else
+        //     {
+        //          $location.url("/" + $location.path()).replace();
+        //     }
+              
+        // }
     });
-    // $rootScope.logout = function(){
-    //     socialLoginService.logout();
-    //      $rootScope.isAuthorized = false;
-    //         $rootScope.loggedInUser = "";
-    //         $location.path("/login");
-    //         $scope.$apply();
-    // }
 });
 convopal.directive("header", function() {
 return {
     restrict: 'A',
     transclude: true,
     templateUrl : 'angular/directives/header.html',
-    
-    // link: function(scope, element, attrs) {
-    //   scope.onClick = function () {
-    //     if( scope.order === scope.by ) {
-    //        scope.reverse = !scope.reverse 
-    //     } else {
-    //       scope.by = scope.order ;
-    //       scope.reverse = false; 
-    //     }
-    //   }
-    // },
     controller:function($scope, $element, $attrs, $transclude,$rootScope,$location,socialLoginService) {
         $rootScope.loggedInUser = "";
         $rootScope.isAuthorized = false;
@@ -109,31 +109,26 @@ return {
             $location.path("/login");
             $scope.$apply();
     }
-    // $rootScope.login = function(){
-    //         $rootScope.isAuthorized = false;
-    //         $rootScope.loggedInUser = "";
-    //         $rootScope.userType = 1;
-    //         $location.path("/login");
-    //         $scope.$apply();
-    // }
-// controller logic goes here
         }
     }
 });
-// var app = angular.module("convopal", ["ngRoute"]);
-// app.config(function($routeProvider) {
-//     $routeProvider
-//     .when("/dashboard", {
-//         templateUrl : "angular/partials/dashboard.html"
-//     })
-//     .when("/red", {
-//         templateUrl : "red.htm"
-//     })
-//     .when("/green", {
-//         templateUrl : "green.htm"
-//     })
-//     .when("/blue", {
-//         templateUrl : "blue.htm"
-//     });
-// });
-
+convopal.directive("fileread", [
+  function() {
+    return {
+      scope: {
+        fileread: "="
+      },
+      link: function(scope, element, attributes) {
+        element.bind("change", function(changeEvent) {
+          var reader = new FileReader();
+          reader.onload = function(loadEvent) {
+            scope.$apply(function() {
+              scope.fileread = loadEvent.target.result;
+            });
+          }
+          reader.readAsDataURL(changeEvent.target.files[0]);
+        });
+      }
+    }
+  }
+]);

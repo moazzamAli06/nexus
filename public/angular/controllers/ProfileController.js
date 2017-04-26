@@ -1,7 +1,24 @@
 convopal.controller('ProfileController',
 function($scope,$rootScope,$location,profileService,$http,moment,socialLoginService) {
 	//$scope.username = $rootscope.$scope.name;
-	
+	 //$scope.files = [];
+
+       //listen for the file selected event
+    	// $scope.$on("fileSelected", function (event, args) {
+    	//     $scope.$apply(function () {
+    	//         //add the file object to the scope's files collection
+		// 		$scope.file = args.file;
+    	//         //$scope.files.push(args.file);
+    	//         //console.log('file is ');
+    	//         console.dir(args.file);
+    	//     });
+    	// });
+	userDetails = function(imageUrl,username,user_id)
+	{
+		this.imageUrl = imageUrl;
+		this.username = username;
+		this.user_id = user_id;
+	}
 	$scope.username = $rootScope.loggedInUser.name;
 	$scope.email = $rootScope.loggedInUser.email;
 	$scope.imageUrl = $rootScope.loggedInUser.imageUrl;
@@ -776,11 +793,63 @@ function($scope,$rootScope,$location,profileService,$http,moment,socialLoginServ
 		{ "value":"31", "title" : "31"}
 		]};
 	
+	
+	
 	$scope.save = function(){
-		$http.post('profile/update', {id:$scope.id,user_id:$scope.user_id, name:$scope.username,email:$scope.email,imageUrl:$scope.imageUrl,country:$scope.countries.model,
-                timezone:$scope.timezone.model,year:$scope.year.model,day:$scope.day.model,month:$scope.month.model,gender:$scope.gender.model,
-				short_info:$scope.short_info,long_info:$scope.long_info,google_id:$scope.google_id,skype_id:$scope.skype_id,qq:$scope.qq,
-				face_time:$scope.face_time,city:$scope.city }).then(function (response) {
+		// var fd = new FormData('name',$scope.username); // XXX: Neex AJAX2
+		// fd.append('file',$scope.imageUrl);
+		// 	// You could show a loading image for example...
+
+		// 	$.ajax({
+		// 	url: 'profile/update',
+		// 	xhr: function() { // custom xhr (is the best)
+
+		// 		var xhr = new XMLHttpRequest();
+		// 		var total = 0;
+
+		// 		// Get the total size of files
+		// 		$.each(document.getElementById('file').files, function(i, file) {
+		// 				total += file.size;
+		// 		});
+
+		// 		return xhr;
+		// 	},
+		// 	type: 'post',
+		// 	processData: false,
+		// 	contentType: false,
+		// 	data: fd,
+		// 	success: function(data) {
+		// 		// do something...
+		// 		console.log(data);
+		// 		//alert('uploaded');
+		// 	}
+		// 	});
+
+		//var test = dataURItoBlob($scope.imageUrl);
+		// var test = $('input[type=file]')[0].files[0];
+		// var fd = new FormData();
+		// fd.append('file',$('input[type=file]')[0].files[0]);
+		$http.post('profile/update',
+		{
+				id:$scope.id,
+				user_id:$scope.user_id, 
+				name:$scope.username,
+				email:$scope.email,
+				imageUrl:$scope.imageUrl,
+				country:$scope.countries.model,
+                timezone:$scope.timezone.model,
+				year:$scope.year.model,
+				day:$scope.day.model,
+				month:$scope.month.model,
+				gender:$scope.gender.model,
+				short_info:$scope.short_info,
+				long_info:$scope.long_info,
+				google_id:$scope.google_id,
+				skype_id:$scope.skype_id,
+				qq:$scope.qq,
+				face_time:$scope.face_time,
+				city:$scope.city 
+				}).then(function (response) {
 					alert("Record submit successfully.");
 			console.log(response);
 		});
@@ -791,8 +860,15 @@ function($scope,$rootScope,$location,profileService,$http,moment,socialLoginServ
 		method: 'GET',
 		url: 'profile/show'
 	}).then(function successCallback(response) {
+			if($rootScope.loggedInUser == "")
+			{
+				$rootScope.loggedInUser = new userDetails(response.data.imageUrl,response.data.username,response.data.user_id);
+			}
+			$rootScope.isAuthorized = response.data.isAuthorized;
+			$scope.imageUrl = response.data.imageUrl;
+			$scope.username = response.data.username;
 			$scope.id = response.data.id;
-			$scope.user_id = $rootScope.id;
+			$scope.user_id = response.data.user_id;
 			$scope.gender.model = response.data.gender;
 			$scope.countries.model = response.data.country;
 			$scope.timezone.model = response.data.timezone;
@@ -811,17 +887,19 @@ function($scope,$rootScope,$location,profileService,$http,moment,socialLoginServ
 			$scope.created_at =  moment(response.data.created_at, "YYYY-MM-DD").format('LL');
 			//console.log(respone.data);
 		}, function errorCallback(response) {
-			console.log(response);
+			console.log(response.data);
 		});
 	}
-	//  $rootScope.logout = function(){
-    //     socialLoginService.logout();
-    //      $rootScope.isAuthorized = false;
-    //         $rootScope.loggedInUser = "";
-    //         $location.path("/login");
-    //         $scope.$apply();
-    // }
-	
-	//$location.path('/profile').replace();
-	//$location.replace();
+	function dataURItoBlob(dataURI) {
+      var binary = atob(dataURI.split(',')[1]);
+      var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+      var array = [];
+      for (var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+      }
+      return new Blob([new Uint8Array(array)], {
+        type: mimeString
+      });
+    }
+
 });
