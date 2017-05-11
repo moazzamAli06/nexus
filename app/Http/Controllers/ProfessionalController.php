@@ -8,10 +8,11 @@ use App\Experience;
 use App\Education;
 use App\Http\Requests;
 use App\User;
+use App\Timetable;
 use DateTime;
 use App\Http\Controllers\Controller;
 
-class TeacherController extends Controller
+class ProfessionalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -73,7 +74,7 @@ class TeacherController extends Controller
          $user = $request->session()->get('user');
          $value = Professional::where('user_id',$user->id) -> first();
          $value->experiences = Experience::where('prof_id',$value->id)->get();
-         //$value->educations = Education::where('prof_id',$value->id)->get();
+         $value->educations = Education::where('prof_id',$value->id)->get();
          if($value != null)
          {
              $value->isAuthorized = true;
@@ -107,31 +108,51 @@ class TeacherController extends Controller
         //$profile = new Student();
         //$profile->name = $request->input('name');
         //$profile->id = $request->input('id');
-        $teacher = Professional::find($request->input('id'));
-        $teacher->username = $request->input('username');
-        $teacher->fname = $request->input('fname');
-        $teacher->lname = $request->input('lname');
-        $teacher->social_id = $request->input('social_id');
-        $teacher->account_id = $request->input('account_id');
-        $teacher->country = $request->input('living_country');;
-        //$teacher->city = $request->input('city');
-        $teacher->living_country = $request->input('living_country');
-        $teacher->C_fname = $request->input('C_fname');
-        $teacher->C_lname = $request->input('C_lname');
-        $teacher->C_streetadress = $request->input('C_streetadress');
-        $teacher->C_city = $request->input('C_city');
-        $teacher->C_state = $request->input('C_state');
-        $teacher->C_zip = $request->input('C_zip');
-        $teacher->C_country = $request->input('C_country');
-        $teacher->C_phone = $request->input('C_phone');
-        $teacher->C_email = $request->input('C_email');
-        $teacher->video_url = $request->input('video_url');
-        $teacher->is_show_publicity = $request->input('is_show_publicity');
-        $teacher->brief_into = $request->input('brief_into');
-        $teacher->long_intro = $request->input('long_intro');
-        $teacher->availble_status = $request->input('availble_status');
-        $teacher->save();
-        return $request->All();
+        $professional = Professional::find($request->input('id'));
+       
+        $professional->username = $request->input('username');
+        $professional->fname = $request->input('fname');
+        $professional->lname = $request->input('lname');
+        $professional->social_id = $request->input('social_id');
+        $professional->account_id = $request->input('account_id');
+        $professional->country = $request->input('living_country');;
+        //$professional->city = $request->input('city');
+        $professional->living_country = $request->input('living_country');
+        $professional->C_fname = $request->input('C_fname');
+        $professional->C_lname = $request->input('C_lname');
+        $professional->C_streetadress = $request->input('C_streetadress');
+        $professional->C_city = $request->input('C_city');
+        $professional->C_state = $request->input('C_state');
+        $professional->C_zip = $request->input('C_zip');
+        $professional->C_country = $request->input('C_country');
+        $professional->C_phone = $request->input('C_phone');
+        $professional->C_email = $request->input('C_email');
+        $professional->video_url = $request->input('video_url');
+        //$professional->is_show_publicity = $request->input('is_show_publicity');
+        $professional->brief_into = $request->input('brief_into');
+        $professional->long_intro = $request->input('long_intro');
+        $professional->availble_status = $request->input('availble_status');
+        $professional->save();
+        // $timeTable = Timetable::where('prof_id',$professional->id) -> get();
+        // $schedules = $request->input('schedule');
+        // foreach ($request->input('schedule') as $item ) {
+        //         // if($timeTable === null)
+        //         // {
+        //              $timeTable = new Timetable();
+        //         // }
+                
+        //         //$timeTable->day = "Monday";
+        //         // $timeTable->day = $item->day;
+        //         // $timeTable->time_from = $item->timeFrom;
+        //         // $timeTable->time_to = $item->timeTo;
+        //         $timeTable->day ="Mondays";
+        //         $timeTable->time_from = "10:00 AM";
+        //         $timeTable->time_to = "10:00 PM";
+        //         $timeTable->prof_id = $professional->id;
+        //         $timeTable->save();
+               
+        // }
+        return $professional;
     }
 
     /**

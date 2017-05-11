@@ -1,516 +1,1039 @@
- 
- <div ng-controller="TeacherController" ng-init="get()">
- <div class="container table1">
-	    <div class="row form-group">
+<!--<div ng-controller="TeacherController" ng-init="get()">
+    <div class="container table1">
+        <div class="row form-group">
             <div class="col-xs-12">
                 <ul class="nav nav-pills nav-justified thumbnail setup-panel" style="margin-top: 56px;">
-                    <li class="active"><a href="#step-1">
-                        <h4 class="list-group-item-heading">Step 1</h4>
-                        <p class="list-group-item-text">Personal</p>
-                    </a></li>
-                    <li class="disabled"><a href="#step-2">
-                        <h4 class="list-group-item-heading">Step 2</h4>
-                        <p class="list-group-item-text">Profile</p>
-                    </a></li>
-                    <li class="disabled"><a href="#step-3">
-                        <h4 class="list-group-item-heading">Step 3</h4>
-                        <p class="list-group-item-text">Term & Services</p>
-                    </a></li>
-                       
+                    <li class="active">
+                        <a href="#step-1">
+                            <h4 class="list-group-item-heading">Step 1</h4>
+                            <p class="list-group-item-text">Personal</p>
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a href="#step-2">
+                            <h4 class="list-group-item-heading">Step 2</h4>
+                            <p class="list-group-item-text">Profile</p>
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a href="#step-3">
+                            <h4 class="list-group-item-heading">Step 3</h4>
+                            <p class="list-group-item-text">Term & Services</p>
+                        </a>
+                    </li>
+
                 </ul>
-            </div>
-	    </div>
-    </div>	
-
-
-<form method="post" action="store" class="container">
-    <div class="row setup-content" id="step-1">
-        <div class="col-xs-12">
-            <div class="col-md-12 well text-center">
-                <h1> Personal Information</h1>
-
-<!-- <form> -->               
-                
-    <div class="container">
-        
-        <div class="form-horizontal" role="form">
-                <h2>Basic Information</h2>
-                <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">First Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="fname" required="required" placeholder="First Name" ng-model="fname"  class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Last Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="lname" required="required" placeholder="Last Name" ng-model="lname"  class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="firstName" class="col-sm-3 control-label">Display Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="firstName" required="required" placeholder="Full Name" ng-model="username" name="user_name" class="form-control" autofocus>
-                        <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
-                    </div>
-                </div>
-                <!--<div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Email</label>
-                    <div class="col-sm-9">
-                        <input type="email" id="email" required="required" placeholder="Email" ng-model="C_email" name="C_email" class="form-control">
-                    </div>
-                </div>-->
-                
-                <div class="form-group">
-                    <label for="Skype" class="col-sm-3 control-label">Skype</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="text" required="required" placeholder="Skype Id" ng-model="social_id" name="social_id" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="userid" class="col-sm-3 control-label">User ID</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="account_id" ng-model="account_id" placeholder="User Account ID" class="form-control">
-                    </div>
-                </div>
-               
-                <div class="form-group">
-                    <label for="country" class="col-sm-3 control-label">From</label>
-                    <div class="col-sm-9">
-                        <select id="country" ng-model="From_countries.model" class="form-control" name="living_country">
-                           <option ng-repeat="country in From_countries.availableOptions" value="{{country.value}}">{{country.title}}</option>
-                                        
-                        </select>
-                    </div>
-                </div> <!-- /.form-group -->
-
-                <div class="form-group">
-                    <label for="country" class="col-sm-3 control-label">Living In</label>
-                    <div class="col-sm-9">
-                        <select id="country" ng-model="liveIncountries.model" class="form-control" name="living_country">
-                           <option ng-repeat="country in liveIncountries.availableOptions" value="{{country.value}}">{{country.title}}</option>
-                                        
-                        </select>
-                    </div>
-                </div> <!-- /.form-group -->
-                
-                <h1> Payment Information</h1>
-              
-             
-                
-                <div class="form-group">
-                    <label for="firstName" class="col-sm-3 control-label">first Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="firstName" name="C_fname" ng-model="C_fname" placeholder="First Name" class="form-control" autofocus>
-                       
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Last Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="C_lname" ng-model="C_lname" placeholder="Last Nama" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Street Address</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="C_streetadress" ng-model="C_streetadress" placeholder="Address" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="Skype" class="col-sm-3 control-label">City</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="C_city" ng-model="C_city" placeholder="City" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="userid" class="col-sm-3 control-label">State/Province</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="C_state" ng-model="C_state" placeholder="State" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="userid" class="col-sm-3 control-label">Zip</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="C_zip" ng-model="C_zip" placeholder="Zip Code" class="form-control">
-                    </div>
-                </div>
-               
-               <div class="form-group">
-                    <label for="userid" class="col-sm-3 control-label">Phone number</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="C_phone" ng-model="C_phone" placeholder="Phone number" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Email</label>
-                    <div class="col-sm-9">
-                        <input type="email" id="email" name="C_email" ng-model="C_email" placeholder="Email" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="country" class="col-sm-3 control-label">Country</label>
-                    <div class="col-sm-9">
-                        <select id="country" ng-model="C_countries.model" class="form-control" name="living_country">
-                           <option ng-repeat="country in C_countries.availableOptions" value="{{country.value}}">{{country.title}}</option>
-                                        
-                        </select>
-                    </div>
-                </div> <!-- /.form-group -->
-               
-               
-              <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block" name="submit" id="submit"  ng-click="save()">Save & COntinue</button>
-                    </div>
-                </div>
-          
-            </div>
-	   </div>
-                
-<!-- </form> -->
-                
-                <button id="activate-step-2" class="btn btn-primary btn-md">Activate Step 2</button>
             </div>
         </div>
     </div>
+    <div class="row setup-content" id="step-1">
+        <div class="container">
+            <div class="row form-back">
+                <div class="col-md-12 col-xs-12">
 
-</form>
+                    <h1> Personal Information</h1>
 
-<form class="container">
 
+
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="panel-heading"><h4>Basic Information</h4></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-3 control-label">First Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="fname" required="required" placeholder="First Name" ng-model="fname" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-3 control-label">Last Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="lname" required="required" placeholder="Last Name" ng-model="lname" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-horizontal" role="form">
+                            <h2>Basic Information</h2>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">First Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="fname" required="required" placeholder="First Name" ng-model="fname" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">Last Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="lname" required="required" placeholder="Last Name" ng-model="lname" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-3 control-label">Display Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="firstName" required="required" placeholder="Full Name" ng-model="username" name="user_name" class="form-control" autofocus>
+                                    <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="Skype" class="col-sm-3 control-label">Skype</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="text" required="required" placeholder="Skype Id" ng-model="social_id" name="social_id" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="userid" class="col-sm-3 control-label">User ID</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="account_id" ng-model="account_id" placeholder="User Account ID" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country" class="col-sm-3 control-label">From</label>
+                                <div class="col-sm-9">
+                                    <select id="country" ng-model="From_countries.model" class="form-control" name="living_country">
+                                        <option ng-repeat="country in From_countries.availableOptions" value="{{country.value}}">{{country.title}}</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country" class="col-sm-3 control-label">Living In</label>
+                                <div class="col-sm-9">
+                                    <select id="country" ng-model="liveIncountries.model" class="form-control" name="living_country">
+                                        <option ng-repeat="country in liveIncountries.availableOptions" value="{{country.value}}">{{country.title}}</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <h1> Payment Information</h1>
+
+
+
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-3 control-label">first Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="firstName" name="C_fname" ng-model="C_fname" placeholder="First Name" class="form-control" autofocus>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">Last Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="C_lname" ng-model="C_lname" placeholder="Last Nama" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-sm-3 control-label">Street Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="C_streetadress" ng-model="C_streetadress" placeholder="Address" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Skype" class="col-sm-3 control-label">City</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="C_city" ng-model="C_city" placeholder="City" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="userid" class="col-sm-3 control-label">State/Province</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="C_state" ng-model="C_state" placeholder="State" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="userid" class="col-sm-3 control-label">Zip</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="C_zip" ng-model="C_zip" placeholder="Zip Code" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="userid" class="col-sm-3 control-label">Phone number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="C_phone" ng-model="C_phone" placeholder="Phone number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" id="email" name="C_email" ng-model="C_email" placeholder="Email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="country" class="col-sm-3 control-label">Country</label>
+                                <div class="col-sm-9">
+                                    <select id="country" ng-model="C_countries.model" class="form-control" name="living_country">
+                                        <option ng-repeat="country in C_countries.availableOptions" value="{{country.value}}">{{country.title}}</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-9 col-sm-offset-3">
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit" id="submit" ng-click="save()">Save & COntinue</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <button id="activate-step-2" class="btn btn-primary btn-md">Activate Step 2</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <div class="row setup-content" id="step-2">
         <div class="col-xs-12">
             <div class="col-md-12 well text-center">
                 <h1 class="text-center"> STEP 2</h1>
-                
 
 
-    <div class="container">
-        
-        <div class="form-horizontal" role="form">
+
+                <div class="container">
+
+                    <div class="form-horizontal" role="form">
 
 
-                <h2>Basic Information</h2>
+                        <h2>Basic Information</h2>
 
-               
-                <div class="form-group">
-                    <label class="control-label">Copy & Paste Url link here</label>
-                    <div class="col-sm-12">
-                     <input type="url" required="required" name="video_url" ng-model="video_url" class="form-control" placeholder="Enter video Url">
-                    </div>
-                </div>
-                
-               
-                <div class="form-group">
-                    <label for="comment">short intro</label>
-                    <textarea class="form-control"  required="required" name="brief_into" ng-model="brief_into" rows="5" id="comment"></textarea>
-                    </div>
 
-                    <div class="form-group">
-                    <label for="comment">Long intro</label>
-                    <textarea class="form-control"  required="required" name="long_into" ng-model="long_intro" rows="5" id="comment"></textarea>
-                    </div>
-               
+                        <div class="form-group">
+                            <label class="control-label">Copy & Paste Url link here</label>
+                            <div class="col-sm-12">
+                                <input type="url" required="required" name="video_url" ng-model="video_url" class="form-control" placeholder="Enter video Url">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="comment">short intro</label>
+                            <textarea class="form-control" required="required" name="brief_into" ng-model="brief_into" rows="5" id="comment"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comment">Long intro</label>
+                            <textarea class="form-control" required="required" name="long_into" ng-model="long_intro" rows="5" id="comment"></textarea>
+                        </div>
+
 
                         <h1>Professional Teaching Background</h1>
                         <hr>
-                      <!--education-->
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
-                        Education
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+                            Education
                         </button>
 
-                        <!-- Modal -->
                         <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" style="display: none;" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">add education</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <label for="country" class="col-sm-3 control-label">Dates Attended</label>
-                               <select ng-model="educationFrom.model">
-                               <option ng-repeat="data in from.availableOptions" value="{{data.value}}">{{data.title}}</option>
-                                </select>
-                                <select ng-model="educationTo.model">
-                               <option ng-repeat="data in to.availableOptions" value="{{data.value}}">{{data.title}}</option>
-                                </select>
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">add education</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label for="country" class="col-sm-3 control-label">Dates Attended</label>
+                                        <select ng-model="educationFrom.model">
+                                            <option ng-repeat="data in from.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                        </select>
+                                        <select ng-model="educationTo.model">
+                                            <option ng-repeat="data in to.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                        </select>
 
-                                <div class="form-group">
-                                    <label class="control-label">School & Institute</label>
-                                    <div class="col-sm-12">
-                                    <input type="text" ng-model="institute" required="required" name="institute" value"this is test"  class="form-control" placeholder="institute">
+                                        <div class="form-group">
+                                            <label class="control-label">School & Institute</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" ng-model="institute" required="required" name="institute" value"this is test" class="form-control" placeholder="institute">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Major / Topic of study</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" ng-model="major" required="required" name="topics" value"this is test" class="form-control" placeholder="topics">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Degree</label>
+                                            <select ng-model="educationDegree.model">
+                                                <option ng-repeat="data in educationDegree.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="comment">Description (optional)</label>
+                                            <textarea class="text" ng-model="educationDescription" required="required" name="description" value"this is test" ng-model="long_into" rows="5" id="comment"></textarea>
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" ng-click="educationSave()">Save changes</button>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label class="control-label">Major / Topic of study</label>
-                                    <div class="col-sm-12">
-                                    <input type="text" ng-model="major" required="required" name="topics" value"this is test" class="form-control" placeholder="topics">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label">Degree</label>
-                                      <select ng-model="educationDegree.model">
-                                         <option ng-repeat="data in educationDegree.availableOptions" value="{{data.value}}">{{data.title}}</option>
-                                      </select>
-                                </div>
-
-                                 <div class="form-group">
-                                <label for="comment">Description (optional)</label>
-                                <textarea class="text" ng-model="educationDescription"  required="required" name="description" value"this is test" ng-model="long_into" rows="5" id="comment"></textarea>
-                                </div>
-
-                                 <!--<div class="form-group">
-                                <label for="comment">Attachment (optional)</label>
-                                <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" /></span>
-                                 </div>-->
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" ng-click="educationSave()">Save changes</button>
-                            </div>
                             </div>
                         </div>
-                    </div>
-                     <p>School & Institiute || Topic || Degree || Description </p>
-                    <!--<div ng-repeat="exp in experiences">
-                        <p>{{exp.company}} || {{exp.postion}} || {{exp.degree}} || {{exp.to}}|| {{exp.from}}|| {{exp.description}} </p>
-                    </div>-->
-                     <button type="button" class="btn btn-default addButton" data-toggle="modal" data-target="#myModal1"><i class="fa fa-plus"></i></button>
-                    
-                    <hr> 
+                        <p>School & Institiute || Topic || Degree || Description </p>
+                        <div ng-repeat="edu in educations">
+                            <p>{{edu.institute}} || {{edu.major}} || {{edu.degree}}|| {{edu.description}}|| {{edu.from}}||{{edu.to}} </p>
+                        </div>
 
-                     <!--work experince-->
-                      
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
-                        Work Experience
+                        <button type="button" class="btn btn-default addButton" data-toggle="modal" data-target="#myModal1"><i class="fa fa-plus"></i></button>
+
+                        <hr>
+
+
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+                            Work Experience
                         </button>
 
-                        <!-- Modal -->
+
                         <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add Work Experience</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <label for="country" class="col-sm-3 control-label">Dates Attended</label>
-                                <select ng-model="from.model">
-                               <option ng-repeat="data in from.availableOptions" value="{{data.value}}">{{data.title}}</option>
-                                </select>
-                                <select ng-model="to.model">
-                               <option ng-repeat="data in year.availableOptions" value="{{data.value}}">{{data.title}}</option>
-                                </select>
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Work Experience</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label for="country" class="col-sm-3 control-label">Dates Attended</label>
+                                        <select ng-model="from.model">
+                                            <option ng-repeat="data in from.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                        </select>
+                                        <select ng-model="to.model">
+                                            <option ng-repeat="data in year.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                        </select>
 
-                                <div class="form-group">
-                                    <label class="control-label">Company</label>
-                                    <div class="col-sm-12">
-                                    <input type="text" required="required" ng-model="company" name="company" value"this is test"  class="form-control" placeholder="company">
+                                        <div class="form-group">
+                                            <label class="control-label">Company</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" required="required" ng-model="company" name="company" value"this is test" class="form-control" placeholder="company">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Position</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" required="required" ng-model="position" value"this is test" class="form-control" placeholder="position">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Degree</label>
+                                            <select ng-model="degree.model">
+                                                <option ng-repeat="data in degree.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Country</label>
+                                            <select ng-model="expCountry.model">
+                                                <option ng-repeat="data in expCountry.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">City</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" required="required" ng-model="ecity" value"this is test" class="form-control" placeholder="city">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="comment">Description (optional)</label>
+                                            <textarea class="text" required="required" ng-model="edescription" value"this is test" ng-model="long_into" rows="5" id="comment"></textarea>
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" ng-click="saveExper()">Save changes</button>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label class="control-label">Position</label>
-                                    <div class="col-sm-12">
-                                    <input type="text" required="required" ng-model="position"  value"this is test" class="form-control" placeholder="position">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label">Degree</label>
-                                    <select ng-model="degree.model">
-                                         <option ng-repeat="data in degree.availableOptions" value="{{data.value}}">{{data.title}}</option>
-                                </select>
-                               
-                                </div>
-                                   <div class="form-group">
-                                    <label class="control-label">Country</label>
-                                    <select ng-model="expCountry.model">
-                                         <option ng-repeat="data in expCountry.availableOptions" value="{{data.value}}">{{data.title}}</option>
-                                </select>
-                                </div>
-                                  <div class="form-group">
-                                    <label class="control-label">City</label>
-                                    <div class="col-sm-12">
-                                    <input type="text" required="required" ng-model="ecity" value"this is test" class="form-control" placeholder="city">
-                                    </div>
-                                </div>
-
-                                 <div class="form-group">
-                                <label for="comment">Description (optional)</label>
-                                <textarea class="text"  required="required" ng-model="edescription" value"this is test" ng-model="long_into" rows="5" id="comment"></textarea>
-                                </div>
-
-                                 
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary"  ng-click="saveExper()">Save changes</button>
-                            </div>
                             </div>
                         </div>
-                    </div> 
-                    <p>Company || POstion || Degree || Topic|| Description </p> <button type="button" class="btn btn-default addButton" data-toggle="modal" data-target="#myModal2"><i class="fa fa-plus"></i></button>
-                     <div ng-repeat="exp in experiences">
-                        <p>{{exp.company}} || {{exp.position}} || {{exp.to}}|| {{exp.from}}|| {{exp.description}} </p>
-                    </div>
-                        <hr> 
-                        <!--Certificate-->
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">
-                        Certificate
+                        <p>Company || POstion || Degree || Topic|| Description </p> <button type="button" class="btn btn-default addButton" data-toggle="modal" data-target="#myModal2"><i class="fa fa-plus"></i></button>
+                        <div ng-repeat="exp in experiences">
+                            <p>{{exp.company}} || {{exp.position}} || {{exp.to}}|| {{exp.from}}|| {{exp.description}} </p>
+                        </div>
+                        <hr>
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">
+                            Certificate
                         </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;"aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add certificate</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <label for="country" class="col-sm-3 control-label">Dates Attended</label>
-                               <select name="from_date">
-                                 <option ng-repeat="data in year.availableOptions" value="{{data.value}}">{{data.title}}</option>
-                                </select>
-                                
-                                <div class="form-group">
-                                    <label class="control-label">Certificate Name</label>
-                                    <div class="col-sm-12">
-                                    <input type="text" required="required" name="name" value"this is test" class="form-control" placeholder="certificate name">
+
+                        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add certificate</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label for="country" class="col-sm-3 control-label">Dates Attended</label>
+                                        <select name="from_date">
+                                            <option ng-repeat="data in year.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                        </select>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Certificate Name</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" required="required" name="name" value"this is test" class="form-control" placeholder="certificate name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Institution</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" required="required" name="institute" value"this is test" class="form-control" placeholder="institute">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label for="comment">Description (optional)</label>
+                                            <textarea class="text" required="required" name="description" value"this is test" ng-model="long_into" rows="5" id="comment"></textarea>
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label class="control-label">Institution</label>
-                                    <div class="col-sm-12">
-                                    <input type="text" required="required" name="institute" value"this is test" class="form-control" placeholder="institute">
-                                    </div>
-                                </div>
-
-                                
-
-                                 <div class="form-group">
-                                <label for="comment">Description (optional)</label>
-                                <textarea class="text"  required="required" name="description" value"this is test" ng-model="long_into" rows="5" id="comment"></textarea>
-                                </div>
-
-                                 
-                                   <!--<div class="form-group">
-                                <label for="comment">Attachment (optional)</label>
-                                <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" name="file_url" /></span>
-                                 </div>-->
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
                             </div>
                         </div>
-                    </div> 
-                    <p>Certificate Name || Institiute || Description  <button type="button" class="btn btn-default addButton" data-toggle="modal" data-target="#myModal3"><i class="fa fa-plus"></i></button></p>
-<hr>
-           <!--add data -->
+                        <p>Certificate Name || Institiute || Description  <button type="button" class="btn btn-default addButton" data-toggle="modal" data-target="#myModal3"><i class="fa fa-plus"></i></button></p>
+                        <hr>
 
 
 
-  
-                <div class="form-group">
-                    <label class="control-label">Availble Status</label>
-                    <div class="col-sm-12">
-                     <input type="status" required="required" name="is_show_publicity" value"this is test" ng-model="availble_status" class="form-control" placeholder="Availbe Status">
+
+
+                        <div class="form-group">
+                            <label class="control-label">Availble Status</label>
+                            <div class="col-sm-12">
+                                <input type="status" required="required" name="is_show_publicity" value"this is test" ng-model="availble_status" class="form-control" placeholder="Availbe Status">
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit" id="submit" ng-click="save()">Register</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                
-               
-               
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block" name="submit" id="submit"  ng-click="save()">Register</button>
-                    </div>
-                </div>
-            </div> <!-- /form -->
-         </div>            
-                
-   
-    
-    
-                
+
+
+
+
                 <button id="activate-step-3" class="btn btn-primary btn-md">Activate Step 3</button>
             </div>
         </div>
     </div>
-
-</form>
-
-
-<form class="container">
-
     <div class="row setup-content" id="step-3">
         <div class="col-xs-12">
             <div class="col-md-12 well text-center">
                 <h1 class="text-center"> STEP 3</h1>
-                
-<div class="container">
-        
-        <div class="form-horizontal" role="form">
 
-            <div class="col-md-12">
-                            
-                            <p>
-                                By clicking on "Register" you agree to The Company's' Terms and Conditions
-                                 While rare, prices are subject to change based on exchange rate fluctuations - 
-                                should such a fluctuation happen, we may request an additional payment. You have the option to request a full refund or to pay the new price. (Paragraph 13.5.8)
-                          
-                            </p>
-                            <p>
-                                While rare, prices are subject to change based on exchange rate fluctuations - 
-                                should such a fluctuation happen, we may request an additional payment. You have the option to request a full refund or to pay the new price. (Paragraph 13.5.8)
-                            </p>
-                            <p>
-                                Should there be an error in the description or pricing of a product, we will provide you with a full refund (Paragraph 13.5.6)
-                            </p>
-                            <p>
-                                Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)
-                            </p>
-                            
-                            
-                    </div>
-               
+                <div class="container">
 
-                
-               
-               
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block" name="submit" id="submit"  ng-click="save()">Register</button>
+                    <div class="form-horizontal" role="form">
+
+                        <div class="col-md-12">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Day</th>
+                                        <th>Time From</th>
+                                        <th>Time To</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in scheduleArray">
+                                        <td><span>{{item.day}}</span><input type="checkbox" ng-model="item.isday" /></td>
+                                        <td>
+                                            <div class='input-group date datetimepicker'>
+                                                <input type='text' class="form-control" ng-model="item.timeFrom" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-time"></span>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class='input-group date'>
+                                                <input type='text' class="form-control" ng-model="item.timeTo" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-time"></span>
+                                                </span>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit" id="submit" ng-click="save()">Register</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div> <!-- /form -->
-         </div>
             </div>
         </div>
     </div>
-</form>
-</form>
+</div>-->
+<div ng-controller="TeacherController" ng-init="get()">
 
+    <div class="container" style="margin-top: 55px;margin-bottom: 55px;">
+        <div class="row">
+            <!--start row-->
+            <div class="board">
+                <ul class="nav nav-tabs">
+                    <div class="liner"></div>
+                    <li rel-index="0" class="active">
+                        <a href="#step-1" class="btn" aria-controls="step-1" role="tab" data-toggle="tab">
+                            <span><i class="glyphicon glyphicon-user"></i></span>
+                        </a>
+                    </li>
+                    <li rel-index="1">
+                        <a href="#step-2" class="btn disabled" aria-controls="step-2" role="tab" data-toggle="tab">
+                            <span><i class="glyphicon glyphicon-heart"></i></span>
+                        </a>
+                    </li>
+                    <li rel-index="2">
+                        <a href="#step-3" class="btn disabled" aria-controls="step-3" role="tab" data-toggle="tab">
+                            <span><i class="glyphicon glyphicon-plus"></i></span>
+                        </a>
+                    </li>
+                    <li rel-index="3">
+                        <a href="#step-4" class="btn disabled" aria-controls="step-4" role="tab" data-toggle="tab">
+                            <span><i class="glyphicon glyphicon-ok"></i></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="tab-content">
+
+                <!--1st-->
+                <div role="tabpanel" class="tab-pane active" id="step-1">
+                    <div class="col-md-12" style="background: white;margin-top: 10px;">
+                        <div class="row">
+
+                            <div class="panel-heading"><h4>Basic Information</h4></div>
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="firstname" class="control-label">First Name</label>
+                                    <input maxlength="100" type="text" required="required" id="fname" class="form-control" placeholder="First Name" ng-model="fname" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email" class="control-label">Last Name</label>
+                                    <input maxlength="100" type="text" required="required" id="lname" placeholder="Last Name" ng-model="lname" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="firstName" class="control-label">Display Name</label>
+                                    <input maxlength="100" type="text" id="firstName" required="required" placeholder="Full Name" ng-model="username" name="user_name" class="form-control" autofocus>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Skype" class="control-label">Skype</label>
+                                    <input type="text" maxlength="100" id="text" required="required" placeholder="Skype Id" ng-model="social_id" name="social_id" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userid" class="control-label">User ID</label>
+                                    <input maxlength="100" type="text" name="account_id" ng-model="account_id" placeholder="User Account ID" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="country">From</label>
+
+                                    <select id="country" ng-model="From_countries.model" class="form-control" name="living_country">
+                                        <option ng-repeat="country in From_countries.availableOptions" value="{{country.value}}">{{country.title}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="country">Living In</label>
+                                    <select id="country" ng-model="liveIncountries.model" class="form-control" name="living_country">
+                                        <option ng-repeat="country in liveIncountries.availableOptions" value="{{country.value}}">{{country.title}}</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" style="background: white;margin-top: 10px;">
+                        <div class="row">
+
+                            <div class="panel-heading"><h4>My Teacher Profile Photo</h4></div>
+                            <div class="col-md-4" style="margin: 15px;">
+                                <img style="opacity: 0.8;height: 200px;" data-ng-src="{{imageUrl}}">
+                                <div class="checkbox" style="margin-bottom: 15px">
+                                    <label>
+                                        <!--<input type="checkbox" class="px text-bold text-lb" id="img-opacity" ng-click="changeOpacity()"> -->
+                                        <span class="lbl text-lb" style="font-weight: 500">Use my current photo</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label class="btn btn-default" for="upload-file-selector">
+                                        <input id="upload-file-selector" type="file">
+                                        <i class="fa_icon icon-upload-alt margin-correction"></i>upload file
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" style="background: white;margin-top: 10px;">
+                        <div class="row">
+
+                            <div class="panel-heading"><h4>Payment Information</h4></div>
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="firstName" class="control-label">first Name</label>
+
+                                    <input type="text" maxlength="100" id="firstName" name="C_fname" ng-model="C_fname" placeholder="First Name" class="form-control" autofocus>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email" class="control-label">Last Name</label>
+
+                                    <input type="text" maxlength="100" name="C_lname" ng-model="C_lname" placeholder="Last Nama" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="password" class="control-label">Street Address</label>
+
+                                    <input type="text" name="C_streetadress" ng-model="C_streetadress" placeholder="Address" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Skype" class="control-label">City</label>
+
+                                    <input type="text" name="C_city" ng-model="C_city" placeholder="City" class="form-control">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userid" class="control-label">State/Province</label>
+
+                                    <input type="text" name="C_state" ng-model="C_state" placeholder="State" class="form-control">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userid" class="control-label">Zip</label>
+
+                                    <input type="text" name="C_zip" ng-model="C_zip" placeholder="Zip Code" class="form-control">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="userid" class="control-label">Phone number</label>
+
+                                    <input type="text" name="C_phone" ng-model="C_phone" placeholder="Phone number" class="form-control">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email" class="control-label">Email</label>
+
+                                    <input type="email" id="email" name="C_email" ng-model="C_email" placeholder="Email" class="form-control">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="country" class="control-label">Country</label>
+
+                                    <select id="country" ng-model="C_countries.model" class="form-control" name="living_country">
+                                        <option ng-repeat="country in C_countries.availableOptions" value="{{country.value}}">{{country.title}}</option>
+
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="background: white;">
+                        <button id="step-1-next" class="btn btn-lg btn-primary nextBtn pull-right" style="margin-bottom: 20px;">Next</button>
+                        <br>
+                    </div>
+                </div>
+
+
+                <!--2nd-->
+
+                <div role="tabpanel" class="tab-pane" id="step-2" style="margin-top: 10px;">
+                    <div class="col-md-12">
+                        <div class="row" style="background: white;">
+
+                            <div class="panel-heading"><h4>Video Introduction</h4></div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">Copy & Paste Url link here</label>
+
+                                    <input type="url" required="required" name="video_url" ng-model="video_url" class="form-control" placeholder="Enter video Url">
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="comment">short intro</label>
+                                    <textarea class="form-control" required="required" name="brief_into" ng-model="brief_into" rows="5" id="comment"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="comment">Long intro</label>
+                                    <textarea class="form-control" required="required" name="long_into" ng-model="long_intro" rows="5" id="comment"></textarea>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="row" style="background: white;margin-top: 8px;">
+
+                            <div class="panel-heading"><h4>Professional Teaching Background</h4></div>
+
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4" style="margin-top: 5px;">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1" style="margin-left: 97px;">
+                                Education
+                            </button>
+
+                            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" style="display: none;" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title" id="exampleModalLabel">Add education</h1>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label for="country" class="control-label">Dates Attended</label>
+                                            <select ng-model="educationFrom.model" style="width: 132px;">
+                                                <option ng-repeat="data in from.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                            </select>
+                                            <select ng-model="educationTo.model" style="width: 132px;">
+                                                <option ng-repeat="data in to.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                            </select>
+
+                                            <div class="form-group">
+                                                <label class="control-label">School & Institute</label>
+                                                <div class="">
+                                                    <input type="text" ng-model="institute" required="required" name="institute" value"this is test" class="form-control" placeholder="institute">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label">Major / Topic of study</label>
+                                                <div class="">
+                                                    <input type="text" ng-model="major" required="required" name="topics" value"this is test" class="form-control" placeholder="topics">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label">Degree</label>
+                                                <select ng-model="educationDegree.model">
+                                                    <option ng-repeat="data in educationDegree.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="comment">Description (optional)</label>
+                                                <textarea class="text" ng-model="educationDescription" required="required" name="description" value"this is test" ng-model="long_into" rows="5" id="comment"></textarea>
+                                            </div>
+
+
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" ng-click="educationSave()">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>School & Institiute || Topic || Degree || Description </p>
+                            <div ng-repeat="edu in educations">
+                                <p>{{edu.institute}} || {{edu.major}} || {{edu.degree}}|| {{edu.description}}|| {{edu.from}}||{{edu.to}} </p>
+                            </div>
+
+                            <button type="button" class="btn btn-default addButton" data-toggle="modal" data-target="#myModal1" style="
+    margin-left: 100px;
+"><i class="fa fa-plus"></i></button>
+
+                            <hr>
+
+
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" style="margin-left: 97px;">
+                                Work Experience
+                            </button>
+
+
+                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title" id="exampleModalLabel">Add Work Experience</h1>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label for="country" class="control-label">Dates Attended</label>
+                                            <select ng-model="from.model" style="width: 132px;">
+                                                <option ng-repeat="data in from.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                            </select>
+                                            <select ng-model="to.model" style="width: 132px;">
+                                                <option ng-repeat="data in year.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                            </select>
+
+                                            <div class="form-group">
+                                                <label class="control-label">Company</label>
+                                                <div class="">
+                                                    <input type="text" required="required" ng-model="company" name="company" value"this is test" class="form-control" placeholder="company">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label">Position</label>
+                                                <div class="">
+                                                    <input type="text" required="required" ng-model="position" value"this is test" class="form-control" placeholder="position">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label">Degree</label>
+                                                <select ng-model="degree.model" style="width: 132px;">
+                                                    <option ng-repeat="data in degree.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Country</label>
+                                                <select ng-model="expCountry.model">
+                                                    <option ng-repeat="data in expCountry.availableOptions" value="{{data.value}}">{{data.title}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">City</label>
+                                               
+                                                    <input type="text" required="required" ng-model="ecity" value"this is test" class="form-control" placeholder="city">
+                                                
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="comment">Description (optional)</label>
+                                                <textarea class="text" required="required" ng-model="edescription" value"this is test" ng-model="long_into" rows="5" id="comment"></textarea>
+                                            </div>
+
+
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" ng-click="saveExper()">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Company || POstion || Degree || Topic|| Description </p> <button type="button" class="btn btn-default addButton" data-toggle="modal" data-target="#myModal2" style="
+    margin-left: 100px;
+"><i class="fa fa-plus"></i></button>
+                            <div ng-repeat="exp in experiences">
+                                <p>{{exp.company}} || {{exp.position}} || {{exp.to}}|| {{exp.from}}|| {{exp.description}} </p>
+                            </div>
+                            <hr>
+
+                            <div class="form-group">
+                                <label class="control-label">Availble Status</label>
+                                <div class="col-sm-12">
+                                    <input type="status" required="required" name="is_show_publicity" value"this is test" ng-model="availble_status" class="form-control" placeholder="Availbe Status">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-4"></div>
+
+                        </div>
+
+
+
+
+                       <div class="row" style="background: white;">
+                        <button id="step-2-next" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--3rd-->
+
+                <div role="tabpanel" class="tab-pane" id="step-3">
+                    <div class="col-md-12">
+                        <div class="row" style="background: white;">
+
+                            <div class="panel-heading"><h4>Time Table</h4></div>
+
+                            <div class="col-md-12">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Time From</th>
+                                            <th>Time To</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in scheduleArray">
+                                            <td><span>{{item.day}}</span><input type="checkbox" ng-model="item.isday" /></td>
+                                            <td>
+                                                <div class='input-group date datetimepicker'>
+                                                    <input type='text' class="form-control" ng-model="item.timeFrom" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-time"></span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class='input-group date'>
+                                                    <input type='text' class="form-control" ng-model="item.timeTo" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-time"></span>
+                                                    </span>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+
+
+
+                            </div>
+
+
+                        </div>
+                        <button id="step-3-next" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
+                    </div>
+                </div>
+
+
+                <div role="tabpanel" class="tab-pane" id="step-4">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit" id="submit" ng-click="save()">Register</button>
+                            </div>
+                        </div>
+                        <button id="step-4-next" class="btn btn-lg btn-primary pull-right">Continue</button>
+                    </div>
+                </div>
+            </div>
+            <!--end tab-content-->
+            <!--end row-->
+        </div>
+    </div>
 </div>
 
-
-<script src="/js/techerprofile.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.').datetimepicker({
+            format: 'LT'
+        });
+    });
+</script>

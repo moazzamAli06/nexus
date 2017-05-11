@@ -11,35 +11,37 @@
     <meta name="description" content="Education - Learning theme for your business" /><!--insert your description here-->
     <meta name="author" content="nicdark" /><!--insert your name here-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><!--meta responsive-->
-
     <!--START CSS-->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <!--<link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="{{ asset("css/bootstrap-datetimepicker.min.css") }}" />
     <link rel="stylesheet" href="{{ asset("css/nicdark_style.min.css") }}" />
     <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset("css/model-css.css") }}"> 
-     <link href="{{ asset("css/profile.css") }}" rel="stylesheet" />
-     <link href="{{ asset("css/teacher.css") }}" rel="stylesheet" />
-    <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">-->
+    <link rel="stylesheet" href="{{ asset("css/model-css.css") }}">
+    <link href="{{ asset("css/profile.css") }}" rel="stylesheet" />
+    <link href="{{ asset("css/teacher.css") }}" rel="stylesheet" />
+    <link href="{{ asset("angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css") }}" rel="stylesheet" />
 
+    <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">-->
     <!-- <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
-<script src="bower_components/restangular/dist/restangular.min.js"></script> -->
+    <script src="bower_components/restangular/dist/restangular.min.js"></script> -->
     <!--google fonts-->
     <!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'> -->
-
-    <!--[if lt IE 9]>  
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
-<![endif]-->
-
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'> -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <!--FAVICONS-->
     <link rel="shortcut icon" href="img/favicon/favicon.ico" />
     <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
-    <!--END FAVICONS-->
 
+
+    <!--END FAVICONS-->
     <base href="/" />
 </head>
-<body id="start_nicdark_framework" >
+<body id="start_nicdark_framework">
 
 
 
@@ -75,10 +77,6 @@
 
             </div>
             <!--END search container-->
-
-
-
-
             <!--START menu responsive-->
             <div class="nicdark_navigation_3_sidebar_content nicdark_padding_40 nicdark_box_sizing_border_box nicdark_overflow_hidden nicdark_overflow_y_auto nicdark_transition_all_08_ease nicdark_bg_green nicdark_height_100_percentage nicdark_position_fixed nicdark_width_300 nicdark_right_300_negative nicdark_z_index_9">
 
@@ -209,8 +207,8 @@
 
             </div>
             <!--END menu responsive-->
-            <div header ></div>
- 
+            <div header></div>
+
             <div ng-view></div>
             <!-- <ng-view></ng-view> -->
 
@@ -299,42 +297,51 @@
         </div>
     </div>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
     <!--js-->
-    <script src="{{ asset("js/jquery.min.js") }}"></script>
-    <script src="{{ asset("js/angular.min.js") }}"></script>
-    
- <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>-->
-
-  <!-- Angular Material Library -->
- <!-- <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>-->
-
-    <script src="{{ asset("js/angular-route.min.js") }}"></script>
-    <!--<script src="{{ asset("js/nicdark_plugins.min.js") }}" type="text/javascript"></script>-->
-   
+    <script src="{{asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/bootstrap.min.js") }}"></script>
-    <!--<script src="{{ asset("js/login-model.js") }}" class"ng-scope"></script>-->
-    <script src="{{ asset("js/angularjs-social-login.js") }}"></script>
-    <script src="{{ asset("angular/app.js") }}"></script>
+    <script src="{{ asset("js/angular.min.js") }}"></script>
+    <!--// <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    // <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    // <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    // <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>-->
+    <!-- Angular Material Library -->
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>-->
+    
+    <!--// <script src="{{ asset("js/angular-route.min.js") }}"></script>-->
+    <!--<script src="{{ asset("js/nicdark_plugins.min.js") }}" type="text/javascript"></script>-->
+
+    
+    <!--// <script src="{{ asset("js/login-model.js") }}" class"ng-scope"></script>-->
     <script src="{{ asset("js/moment.js") }}"></script>
-     <script src="{{ asset("js/angular-moment.min.js") }}"></script>
+    <script src="{{ asset("js/angular-moment.min.js") }}"></script>
+    <script src="{{ asset("js/bootstrap-datetimepicker.min.js") }}"></script>
+    <!--//  <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>-->
+
+    <script type="text/javascript" src="{{ asset("angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js") }}"></script>
+    <script src="{{ asset("angular-bootstrap-calendar/dist/js/ui-bootstrap.min.js") }}"></script>
+    <!--// <script src="//cdn.rawgit.com/jkbrzt/rrule/v2.1.0/lib/rrule.js"></script>-->
+    <script src="{{ asset("angular/app.js") }}"></script>
+    <script src="/js/login-model.js"></script>
+    <script src="{{ asset("js/angularjs-social-login.js") }}"></script>
+    <script src="{{ asset("/js/tab-plugin.js") }}"></script>
     <!--    <script src="{{ asset("angular/angular_social_login.js") }}"></script> -->
     <script src="{{ asset("angular/controllers/MainController.js") }}"></script>
     <!--<script src="{{ asset("angular/services/techerprofile.js") }}"></script>-->
     <script src="{{ asset("angular/controllers/UserController.js") }}"></script>
     <script src="{{ asset("angular/controllers/ProfileController.js") }}"></script>
     <script src="{{ asset("angular/controllers/TeacherController.js") }}"></script>
-     <script src="{{ asset("angular/controllers/StudentDashboardController.js") }}"></script>
-      <script src="{{ asset("angular/controllers/TeacherDashboardController.js") }}"></script>
-     <script src="{{ asset("angular/services/authService.js") }}"></script>
-     <script src="{{ asset("angular/services/profileService.js") }}"></script>
-    <!-- <script src="js/controllers.js"></script> -->
+    <script src="{{ asset("angular/controllers/StudentDashboardController.js") }}"></script>
+    <script src="{{ asset("angular/controllers/TeacherDashboardController.js") }}"></script>
+    <script src="{{ asset("angular/controllers/LessonController.js") }}"></script>
 
+    <script src="{{ asset("angular/services/authService.js") }}"></script>
+    <script src="{{ asset("angular/services/profileService.js") }}"></script>
+    
+    <!-- <script src="js/controllers.js"></script> -->
 </body>
 
 </html>

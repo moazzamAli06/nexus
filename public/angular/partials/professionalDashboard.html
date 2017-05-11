@@ -1,0 +1,340 @@
+<div ng-app="convopal">
+    <div ng-controller="LessonController as vm">
+
+        <div class="mainbody container">
+            <div class="row">
+
+                <div style="padding-top:50px;"> </div>
+
+
+
+                <div class="col-sm-6 col-md-12 well-profile">
+                    <div class="col-xs-12 col-sm-3 text-center">
+                        <figure>
+                            <img src="https://lut.im/7trApsDX08/GeilMRp1FIm4f2p7.png" alt="" class="img-circle img-responsive">
+
+                        </figure>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <h2>{{username}}</h2>
+                        <p><strong>About: </strong> Web Designer / UI. </p>
+                        <figcaption class="ratings">
+                            <p>
+                                Ratings
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star-o"></span>
+                                </a>
+                            </p>
+                        </figcaption>
+                        <div class="row">
+                            <div class="col-xs-12 divider text-center">
+
+                                <div class="col-xs-12 col-sm-6 emphasis">
+                                    <h2><strong>245</strong></h2>
+                                    <p><small>No of conversation</small></p>
+                                    <!--<button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>-->
+                                </div>
+                                <div class="col-xs-12 col-sm-6 emphasis">
+                                    <h2><strong>$43</strong></h2>
+                                    <p><small>30 minute rate</small></p>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-xs-12 col-sm-3 text-center">
+                        <button type="button" class="btn btn-warning btn-lg">Profile</button>
+                        <button type="button" class="btn btn-warning btn-lg">Setting</button>
+                    </div>
+
+
+
+
+                    <!--summary-->
+                    <h2 class="text-center">{{ vm.calendarTitle }}</h2>
+
+                    <div class="row">
+
+                        <div class="col-md-6 text-center">
+                            <div class="btn-group" style="padding: 8px;">
+
+                                <button class="btn btn-primary"
+                                        mwl-date-modifier
+                                        date="vm.viewDate"
+                                        decrement="vm.calendarView"
+                                        ng-click="vm.cellIsOpen = false">
+                                    Previous
+                                </button>
+                                <button class="btn btn-default"
+                                        mwl-date-modifier
+                                        date="vm.viewDate"
+                                        set-to-today
+                                        ng-click="vm.cellIsOpen = false">
+                                    Today
+                                </button>
+                                <button class="btn btn-primary"
+                                        mwl-date-modifier
+                                        date="vm.viewDate"
+                                        increment="vm.calendarView"
+                                        ng-click="vm.cellIsOpen = false">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+
+                        <br class="visible-xs visible-sm">
+
+                        <div class="col-md-6 text-center">
+                            <div class="btn-group">
+                                <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'" ng-click="vm.cellIsOpen = false">Year</label>
+                                <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'" ng-click="vm.cellIsOpen = false">Month</label>
+                                <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'" ng-click="vm.cellIsOpen = false">Week</label>
+                                <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'" ng-click="vm.cellIsOpen = false">Day</label>
+                            </div>
+                        </div>
+
+                    </div>
+                   
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 divider">
+                        <h2>Calender</h2>
+                        <!--<iframe src="https://calendar.google.com/calendar/embed?src=jnj6c79ugeb6kj3a55uepgg8k4%40group.calendar.google.com&ctz=Asia/Karachi" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>-->
+                        <mwl-calendar events="vm.events"
+                                      view="vm.calendarView"
+                                      view-title="vm.calendarTitle"
+                                      view-date="vm.viewDate"
+                                      on-event-click="vm.eventClicked(calendarEvent)"
+                                      on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                                      cell-is-open="vm.cellIsOpen"
+                                      day-view-start="06:00"
+                                      day-view-end="22:59"
+                                      day-view-split="30"
+                                      cell-modifier="vm.modifyCell(calendarCell)"
+                                      cell-auto-open-disabled="true"
+                                      on-timespan-click="vm.timespanClicked(calendarDate, calendarCell)">
+                        </mwl-calendar>
+        
+                        <!--<h3 id="event-editor">
+                            Edit events
+                            <button class="btn btn-primary pull-right"
+                                    ng-click="vm.addEvent()">
+                                Add new
+                            </button>
+                            <div class="clearfix"></div>
+                        </h3>-->
+                        <!--
+                          <table class="table table-bordered">
+
+                            <thead>
+                              <tr>
+                                <th>Title</th>
+                                <th>Primary color</th>
+                                <th>Secondary color</th>
+                                <th>Starts at</th>
+                                <th>Ends at</th>
+                                <th>Remove</th>
+                                <th>Add</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr ng-repeat="event in vm.events track by $index">
+                                <td>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    ng-model="event.title">
+                                </td>
+                                <td>
+                                  <input class="form-control" colorpicker type="text" ng-model="event.color.primary">
+                                </td>
+                                <td>
+                                  <input class="form-control" colorpicker type="text" ng-model="event.color.secondary">
+                                </td>
+                                <td>
+                                  <p class="input-group" style="max-width: 250px">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      readonly
+                                      uib-datepicker-popup="dd MMMM yyyy"
+                                      ng-model="event.startsAt"
+                                      is-open="event.startOpen"
+                                      close-text="Close" >
+                                    <span class="input-group-btn">
+                                      <button
+                                        type="button"
+                                        class="btn btn-default"
+                                        ng-click="vm.toggle($event, 'startOpen', event)">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                      </button>
+                                    </span>
+                                  </p>
+                                  <div
+                                    uib-timepicker
+                                    ng-model="event.startsAt"
+                                    hour-step="1"
+                                    minute-step="15"
+                                    show-meridian="true">
+                                  </div>
+                                </td>
+                                <td>
+                                  <p class="input-group" style="max-width: 250px">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      readonly
+                                      uib-datepicker-popup="dd MMMM yyyy"
+                                      ng-model="event.endsAt"
+                                      is-open="event.endOpen"
+                                      close-text="Close">
+                                    <span class="input-group-btn">
+                                      <button
+                                        type="button"
+                                        class="btn btn-default"
+                                        ng-click="vm.toggle($event, 'endOpen', event)">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                      </button>
+                                    </span>
+                                  </p>
+                                  <div
+                                    uib-timepicker
+                                    ng-model="event.endsAt"
+                                    hour-step="1"
+                                    minute-step="15"
+                                    show-meridian="true">
+                                  </div>
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-danger"
+                                    ng-click="vm.events.splice($index, 1)">
+                                    Delete
+                                  </button>
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-success"
+                                    ng-click="vm.events.splice($index, 1)">
+                                    Save
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+
+                          </table>-->
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull right" style="text-align: center;">
+                        <h2>Up comming Lesson</h2>
+
+                        <h3>May 21 2017</h3>
+                        <p>Ali at 6pm</p>
+
+                        <h3>May 21 2017</h3>
+                        <p>Ali at 6pm</p>
+
+                        <h3>May 21 2017</h3>
+                        <p>Ali at 6pm</p>
+
+                        <h3>May 21 2017</h3>
+                        <p>Ali at 6pm</p>
+
+                        <h3>May 21 2017</h3>
+                        <p>Ali at 6pm</p>
+                        <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View All </button>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 divider">
+                                <h2> Upcoming Session Request </h2>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p> Ali request a session on Saturday May 30 at 2pm.</p>
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button  type="button" class="btn btn-success">Approve</button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-danger">Reject </button>
+                                    </div>
+                                    <div class="col-md-2">
+                                       <button type="button" class="btn">Suggest Alternate Time</button>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+<hr>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 divider">
+                                <h2> Past Lesson </h2>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <h2>
+                                            April 10 2017
+                                            </h2>
+                                     </div>
+                                   </div>
+                                   <div class="row">
+                                     <div class="col-md-3">
+                                       <p> Ali at 6pm</p>
+                                       </div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-success btn-block">conversation took place </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-danger btn-block">Conversation did not happen </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 divider">
+                                <h1>Final Transaction</h1>
+                            </div>
+                            <p> Zeshan paid you $ 45.</p>
+                            <p> Zeshan paid you $ 45.</p>
+                            <p> Zeshan paid you $ 45.</p>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

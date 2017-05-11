@@ -1,0 +1,121 @@
+
+<div ng-app="convopal">
+    <div ng-controller="TeacherDashboardController" ng-init="get()">
+
+        <div class="mainbody container">
+            <div class="row">
+
+                <div style="padding-top:50px;"> </div>
+
+
+
+                <div class="col-sm-6 col-md-12 well-profile">
+                    <div class="col-xs-12 col-sm-3 text-center">
+                        <figure>
+                            <img data-ng-src="{{imageUrl}}" alt="" class="img-circle img-responsive" style=" width 177px;">
+                            <!--<img src="https://farm7.staticflickr.com/6163/6195546981_200e87ddaf_b.jpg" alt="" class="img-circle img-responsive"> -->
+                        </figure>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <h2>{{username}}</h2>
+                        <p><strong>About: </strong> {{brief_into}}</p>
+                        <figcaption class="ratings">
+                            <p>
+                                Ratings
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">
+                                    <span class="fa fa-star-o"></span>
+                                </a>
+                            </p>
+                        </figcaption>
+                        <div class="row">
+                            <div class="col-xs-12 divider text-center">
+
+                                <div class="col-xs-12 col-sm-6 emphasis">
+                                    <h2><strong>245</strong></h2>
+                                    <p><small>No of conversation</small></p>
+                                    <!--<button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>-->
+                                </div>
+                                <div class="col-xs-12 col-sm-6 emphasis">
+                                    <h2><strong>$43</strong></h2>
+                                    <p><small>30 minute rate</small></p>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-xs-12 col-sm-3 text-center">
+                        <button type="button" class="btn btn-warning btn-lg">Dashboard</button>
+                    </div>
+                    <hr>
+                    <!--summary-->
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider">
+                        <h2>Summary</h2>
+                        <p>{{long_intro}}</p>
+                    </div>
+
+                    <div class="container" style="text-align: center;">
+                        <div class="row">
+                            <div class="col-xs-9 text-center">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <video data-ng-src="{{video_url}}" autoplay controls></video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container" style="text-align: center;">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h1> Work Experince</h1>
+                            </div>
+
+                        </div>
+
+                        <div class="row" ng-repeat="data in experiences">
+                            <div class="col-xs-12">
+                                <h4> {{data.company}} - {{data.position}} - {{data.country}} - {{data.city}} {{data.form}} - {{data.to}}</h4>
+                                <h5>{{data.description}} </h5>
+                            </div>
+
+                        </div>
+
+                    </div>
+         <hr>
+         <div class="container" style="text-align: center;margin-bottom: 17px;">
+                        <div class="row">
+                            <div class="col-xs-12">
+         <button type="button" class="btn btn-primary">Submit for Approval</button>
+                   </div>
+
+
+                    </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- <script src="{{ asset("angular/controllers/MainController.js") }}"></script> -->

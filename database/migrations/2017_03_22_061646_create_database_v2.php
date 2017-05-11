@@ -165,7 +165,6 @@ class CreateDatabaseV2 extends Migration {
            $table->string('topics');
             $table->string('degree');
             $table->string('description');
-            $table->string('file_url');
             $table->string('is_approved');
             $table->timestamps();
             $table->integer('prof_id')->unsigned();

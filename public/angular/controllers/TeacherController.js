@@ -1,6 +1,8 @@
 convopal.controller('TeacherController',
 function($scope,$rootScope,$location,profileService,$http,moment,socialLoginService) {
-	//$scope.username = $rootscope.$scope.name;
+
+	
+	
 	userDetails = function(imageUrl,username,user_id)
 	{
 		this.imageUrl = imageUrl;
@@ -399,6 +401,14 @@ function($scope,$rootScope,$location,profileService,$http,moment,socialLoginServ
 		this.degree = degree;
 		this.description = description;
 	}
+	var days = function(day,isday,timeFrom,timeTo)
+	{
+		this.day = day;
+		this.isday = isday;
+		this.timeFrom = timeFrom;
+		this.timeTo = timeTo;
+	}
+	$scope.scheduleArray = [];
 	$scope.experiences =[];
 	$scope.educations =[];
 	$scope.created_at = "28 March 2017";
@@ -591,9 +601,15 @@ $scope.educationFrom = {
 		model:null,
 		availableOptions:degrees
 	};
-	
+	$scope.scheduleArray.push(new days('Monday',false,"",""));
+	$scope.scheduleArray.push(new days('Tuesday',false,"",""));
+	$scope.scheduleArray.push(new days('Wednesday',false,"",""));
+	$scope.scheduleArray.push(new days('Thursday',false,"",""));
+	$scope.scheduleArray.push(new days('Friday',false,"",""));
+	$scope.scheduleArray.push(new days('Saturday',false,"",""));
+	$scope.scheduleArray.push(new days('Sunday',false,"",""));
 	$scope.save = function(){
-		$http.post('teacher/update', {
+		$http.post('professional/update', {
 				id:$scope.id,
 				user_id:$scope.user_id,
 				username:$scope.username,
@@ -616,7 +632,8 @@ $scope.educationFrom = {
 				is_show_publicity:$scope.is_show_publicity,
 				brief_into:$scope.brief_into,
 			    long_intro:$scope.long_intro,
-				availble_status:$scope.availble_status
+				availble_status:$scope.availble_status,
+				schedule : $scope.scheduleArray
 		 }).then(function (response) {
 					alert("Record submit successfully.");
 			console.log(response);
@@ -626,7 +643,7 @@ $scope.educationFrom = {
 	$scope.get = function(){
 		$http({
 		method: 'GET',
-		url: 'teacher/show'
+		url: 'professional/show'
 	}).then(function successCallback(response) {
 			if($rootScope.loggedInUser == "")
 			{
@@ -667,9 +684,10 @@ $scope.educationFrom = {
 			$.each(response.data.experiences,function(i,j){
 					$scope.experiences.push(new experience(j.id,j.from_date,j.to_date,j.city,j.country,j.company,j.position,j.description));
 			});
-			// $.each(response.data.educations,function(i,j){
-			// 		$scope.educations.push(new education(j.id,j.from_date,j.to_date,j.city,j.country,j.company,j.position,j.description));
-			// })
+			$.each(response.data.educations,function(i,j){
+					$scope.educations.push(new education(j.id,j.from_date,j.to_date,j.institute,
+										j.topics,j.degree,j.description));
+			})
 
 
 			console.log(response.data);
@@ -707,8 +725,8 @@ $scope.educationFrom = {
 				description:$scope.educationDescription
 		 }).then(function (response) {
 					alert("Record submit successfully.");
-					$scope.educations.push(new education(response.id,response.from_date,response.to_date,response.institute,
-										response.major,response.degree,response.description));
+					$scope.educations.push(new education(response.data.id,response.data.from_date,response.data.to_date,response.data.institute,
+										response.data.topics,response.data.degree,response.data.description));
 			console.log(response);
 		});
 	}
@@ -723,3 +741,4 @@ $scope.educationFrom = {
 	//$location.path('/profile').replace();
 	//$location.replace();
 });
+

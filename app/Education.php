@@ -12,6 +12,7 @@ class Education extends Model
      *
      * @var array
      */
+    public $table = "educations";
     protected $fillable = [
         'id','from_date','to_date','institute','topics','degree','description','is_approved','prof_id'
     ];
@@ -21,7 +22,7 @@ class Education extends Model
      *
      * @var array
      */
-    //  protected $hidden = [
-    //      'file_Url'
-    //  ];
+     protected $hidden = [
+         'file_Url'
+     ];
 }
